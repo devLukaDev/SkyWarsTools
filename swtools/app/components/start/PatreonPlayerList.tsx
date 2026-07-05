@@ -39,7 +39,7 @@ const PatreonPlayerList = () => {
 						if (!supporter.mc_account) return null;
 						return (
 							<a
-								href={`/player/${supporter.mc_account}/stats/table`}
+								href={`/redirect?uuid=${supporter.mc_account}`}
 								key={index}
 								className="flex items-center gap-3 lg:gap-4 bg-content rounded-md p-1 lg:p-2 w-full text-xl animate-press cursor-pointer enchanted"
 							>
