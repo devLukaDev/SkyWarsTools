@@ -106,9 +106,17 @@ export interface Stats {
 
 	skywars_tonic_taker?: number;
 
-	lab_win_lucky_blocks_lab_solo?: number;
-	lab_win_lucky_blocks_lab_team?: number;
-	lab_win_lucky_blocks_lab?: number;
+	lab_win_rush_lab?: number; // – Rush Wins
+	lab_win_rush_lab_solo?: number; // – Rush Solo Wins
+	lab_win_rush_lab_team?: number; // – Rush Team Wins
+	lab_win_slime_lab?: number; // – Slime Wins
+	lab_win_slime_lab_solo?: number; // – Slime Solo Wins
+	lab_win_slime_lab_team?: number; // – Slime Team Wins
+	lab_win_lucky_blocks_lab?: number; // – LB Wins
+	lab_win_lucky_blocks_lab_solo?: number; // – LB Solo Wins
+	lab_win_lucky_blocks_lab_team?: number; // – LB Team Wins
+	lab_win_hunters_vs_beasts_lab?: number; //
+	lab_win_hunters_vs_beasts_lab_solo?: number; // there is no team, usually solo = overall
 
 	heads_eww?: number;
 	heads_yucky?: number;

@@ -2,7 +2,7 @@ import React from "react";
 import TabContent from "./TabContent";
 import { OverallResponse } from "@/app/types/OverallResponse";
 
-const Equips: React.FC<OverallResponse> = (response) => {
+const Gameplay: React.FC<OverallResponse> = (response) => {
 	const renderPerkName = (perk: string | null | undefined) => {
 		if (!perk) return "None";
 		return perk
@@ -110,4 +110,4 @@ const Equips: React.FC<OverallResponse> = (response) => {
 	);
 };
 
-export default Equips;
+export default Gameplay;

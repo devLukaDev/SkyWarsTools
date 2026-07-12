@@ -4,11 +4,11 @@ import Extended from "@/app/components/player/tabs/Extended";
 import Prestige from "@/app/components/player/tabs/Prestige";
 import GrimReaper from "@/app/components/player/tabs/GrimReaper";
 import Playtime from "@/app/components/player/tabs/Playtime";
-// import Legacy from "@/app/components/player/tabs/Legacy";
 import { OverallResponse } from "@/app/types/OverallResponse";
-import Equips from "@/app/components/player/tabs/Equips";
+import Gameplay from "@/app/components/player/tabs/Gameplay";
 import Kits from "@/app/components/player/tabs/Kits";
 import Tools from "@/app/components/player/tabs/Tools";
+import Legacy from "@/app/components/player/tabs/Legacy";
 
 const tabs = [
 	{ label: "Table", value: "table" },
@@ -17,8 +17,8 @@ const tabs = [
 	{ label: "Grim Reaper", value: "grimreaper" },
 	{ label: "Playtime", value: "playtime" },
 	{ label: "Kits", value: "kits" },
-	// { label: "Legacy", value: "legacy" },
-	{ label: "Equips", value: "equips" },
+	{ label: "Legacy", value: "legacy" },
+	{ label: "Gameplay", value: "gameplay" },
 	{ label: "Tools", value: "tools" },
 ];
 
@@ -51,8 +51,8 @@ export default async function PlayerStatsTabPage({ params }: PageProps) {
 			{currentTab.value === "grimreaper" && <GrimReaper {...overallData} />}
 			{currentTab.value === "playtime" && <Playtime {...overallData} />}
 			{currentTab.value === "kits" && <Kits {...overallData} />}
-			{/* {currentTab.value === "legacy" && <Legacy {...overallData}></Legacy>} */}
-			{currentTab.value === "equips" && <Equips {...overallData}></Equips>}
+			{currentTab.value === "legacy" && <Legacy {...overallData}></Legacy>}
+			{currentTab.value === "gameplay" && <Gameplay {...overallData}></Gameplay>}
 			{currentTab.value === "tools" && <Tools {...overallData}></Tools>}
 		</>
 	);

@@ -3,7 +3,6 @@ import { headsMap } from "@/app/utils/Utils";
 import React from "react";
 
 const Heads: React.FC<{ response: OverallResponse }> = ({ response }) => {
-
 	let totalKills = 0;
 	let totalExp = 0;
 	headsMap.forEach((key) => {
@@ -56,6 +55,10 @@ const Heads: React.FC<{ response: OverallResponse }> = ({ response }) => {
 						</tr>
 					</tbody>
 				</table>
+				<br></br>
+				<span className="text-base font-bold">
+					<span className="text-red-500">NOTE: </span>Since the last update, the EXP amounts are inaccurate because of Mini SkyWars.
+				</span>
 			</div>
 		</div>
 	);
