@@ -1,7 +1,7 @@
-import SchemePreviews from "../tools/schemes/page";
+
 import { DescentItem, DescentMap } from "../types/DescentMap";
 import { OverallResponse } from "../types/OverallResponse";
-import { getLastScheme, getSchemeByReq, Scheme } from "./Scheme";
+import { Scheme } from "./Scheme";
 
 export function kitProcessing(value: string): string {
 	const parts = value.split("_");

@@ -5,7 +5,7 @@ import KitPrestigeString from "../../universal/KitPrestigeString";
 import TabContent from "./TabContent";
 import { OverallResponse, Stats } from "@/app/types/OverallResponse";
 import MinecraftText from "@/app/utils/MinecraftText";
-import { Eye, MessageCircleWarning } from "lucide-react";
+import { Eye } from "lucide-react";
 import Link from "next/link";
 import { Tooltip } from "@mui/material";
 import { getSchemeByName } from "@/app/utils/Scheme";

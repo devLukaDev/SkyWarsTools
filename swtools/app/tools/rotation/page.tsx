@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useMapRotationAll, useMapRotationCurrent } from "../../hooks/useMapRotation";
+import { useMapRotationAll } from "../../hooks/useMapRotation";
 import { timeAgo } from "@/app/utils/Utils";
 
 type Map = {

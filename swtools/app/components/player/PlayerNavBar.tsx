@@ -10,8 +10,6 @@ interface PlayerNavBarProps {
 
 const PlayerNavBar: React.FC<PlayerNavBarProps> = ({ playerName }) => {
 	const pathname = usePathname();
-	// Normalize path for matching
-	const normalizedPath = pathname.toLowerCase();
 
 	const navItems = [
 		{ label: "Stats", href: `/player/${playerName}/stats/table` },

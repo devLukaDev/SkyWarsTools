@@ -56,9 +56,13 @@ const Heads: React.FC<{ response: OverallResponse }> = ({ response }) => {
 					</tbody>
 				</table>
 				<br></br>
-				<span className="text-base font-bold">
-					<span className="text-red-500">NOTE: </span>Since the last update, the EXP amounts are inaccurate because of Mini SkyWars.
-				</span>
+				{response.stats.kill_xp_boost && (
+					<span className="text-base font-bold">
+						<span className="text-red-500">NOTE: </span>This player has the Kill XP Boost perk, which means these figures here
+						are incorrect: every head is worth 1 more EXP. It is not possible to account for this, since it is not known
+						when this player purchased this perk.
+					</span>
+				)}
 			</div>
 		</div>
 	);
