@@ -3,7 +3,7 @@
 import React from "react";
 import useSWR from "swr";
 import { useParams } from "next/navigation";
-import { ArrowBigLeft, ArrowBigRight, LoaderCircle } from "lucide-react";
+import { LoaderCircle } from "lucide-react";
 import Tooltip from "@mui/material/Tooltip";
 import ErrorView from "@/app/components/universal/ErrorView";
 import MinecraftText from "@/app/utils/MinecraftText";

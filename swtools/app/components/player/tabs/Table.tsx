@@ -108,7 +108,7 @@ const Table: React.FC<OverallResponse> = (response) => {
 						<tr className="border-b-1 border-white">
 							<td>Lab</td>
 							<td>{(response.stats.wins_lab ?? 0).toLocaleString()}</td>
-							<td>{response.stats.losses_lab}</td>
+							<td>{(response.stats.losses_lab ?? 0).toLocaleString()}</td>
 							<td className={wlrClass(response.stats.wins_lab ?? 0, response.stats.losses_lab ?? 0)}>
 								{getWLR(response.stats.wins_lab ?? 0, response.stats.losses_lab ?? 0).toLocaleString()}
 							</td>

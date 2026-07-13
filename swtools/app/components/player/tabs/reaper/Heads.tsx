@@ -3,7 +3,6 @@ import { headsMap } from "@/app/utils/Utils";
 import React from "react";
 
 const Heads: React.FC<{ response: OverallResponse }> = ({ response }) => {
-
 	let totalKills = 0;
 	let totalExp = 0;
 	headsMap.forEach((key) => {
@@ -56,6 +55,14 @@ const Heads: React.FC<{ response: OverallResponse }> = ({ response }) => {
 						</tr>
 					</tbody>
 				</table>
+				<br></br>
+				{response.stats.kill_xp_boost && (
+					<span className="text-base font-bold">
+						<span className="text-red-500">NOTE: </span>This player has the Kill XP Boost perk, which means these figures here
+						are incorrect: every head is worth 1 more EXP. It is not possible to account for this, since it is not known
+						when this player purchased this perk.
+					</span>
+				)}
 			</div>
 		</div>
 	);

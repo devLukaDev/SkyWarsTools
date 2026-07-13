@@ -1,7 +1,7 @@
 import React from "react";
 
 import { schemes } from "@/app/utils/Scheme";
-import { toCamelCase, formatSchemePreview } from "@/app/utils/Utils";
+import { formatSchemePreview } from "@/app/utils/Utils";
 import MinecraftText from "@/app/utils/MinecraftText";
 
 const SchemePreviews = () => {
