@@ -3,16 +3,12 @@ import React from "react";
 import TabContent from "./TabContent";
 import { OverallResponse } from "@/app/types/OverallResponse";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import Trustfactor from "./gameplay/Trustfactor";
+import Playstyle from "./gameplay/Playstyle";
+import Perks from "./gameplay/Perks";
 
 const Gameplay: React.FC<OverallResponse> = (response) => {
-	const renderPerkName = (perk: string | null | undefined) => {
-		if (!perk) return "None";
-		return perk
-			.replace(/_/g, " ")
-			.replace(/\bsolo\b/gi, "")
-			.replace(/\bteam\b/gi, "")
-			.replace(/\b\w/g, (char) => char.toUpperCase());
-	};
+
 
 	return (
 		<Tabs>
@@ -95,35 +91,18 @@ const Gameplay: React.FC<OverallResponse> = (response) => {
 			</TabPanel>
 			<TabPanel>
 				<TabContent>
-					<div className="w-full flex flex-col lg:flex-row gap-8 justify-center items-start">
-						{/* Normal Perks Table */}
-						<div className="w-full lg:w-1/2">
-							<table className="p-4 w-full text-left bg-content">
-								<tbody>
-									{response.stats.perkslot?.normal &&
-									Object.values(response.stats.perkslot.normal).some((perk) => perk) ? (
-										Object.entries(response.stats.perkslot.normal).map(([slot, perk]) => (
-											<tr className="border-b-1 border-white" key={slot}>
-												<td className="capitalize">Slot {slot}</td>
-												<td className="capitalize">{renderPerkName(perk)}</td>
-											</tr>
-										))
-									) : (
-										<tr>
-											<td colSpan={2}>No normal perks equipped.</td>
-										</tr>
-									)}
-								</tbody>
-							</table>
-						</div>
-					</div>
+					<Perks response={response}></Perks>
 				</TabContent>
 			</TabPanel>
 			<TabPanel>
-				<TabContent>See what external sources say about this player. Coming soon.</TabContent>
+				<TabContent>
+					<Trustfactor response={response}/>
+				</TabContent>
 			</TabPanel>
 			<TabPanel>
-				<TabContent>See what kind of playstyle this player has. Coming soon.</TabContent>
+				<TabContent>
+					<Playstyle response={response}/>
+				</TabContent>
 			</TabPanel>
 		</Tabs>
 	);
