@@ -1,36 +1,65 @@
 import { OverallResponse } from "@/app/types/OverallResponse";
+import MinecraftText from "@/app/utils/MinecraftText";
+import { perks } from "@/app/utils/Perks";
 import React from "react";
 
 function Perks({ response }: { response: OverallResponse }) {
-	const renderPerkName = (perk: string | null | undefined) => {
-		if (!perk) return "None";
-		return perk
-			.replace(/_/g, " ")
-			.replace(/\bsolo\b/gi, "")
-			.replace(/\bteam\b/gi, "")
-			.replace(/\b\w/g, (char) => char.toUpperCase());
-	};
+	// console.log(Object.values(response.stats.perkslot?.normal ?? ""));
 	return (
-		<div className="w-full flex flex-col lg:flex-row gap-8 justify-center items-start">
-			{/* Normal Perks Table */}
-			<div className="w-full lg:w-1/2">
-				<table className="p-4 w-full text-left bg-content">
-					<tbody>
-						{response.stats.perkslot?.normal && Object.values(response.stats.perkslot.normal).some((perk) => perk) ? (
-							Object.entries(response.stats.perkslot.normal).map(([slot, perk]) => (
-								<tr className="border-b-1 border-white" key={slot}>
-									<td className="capitalize">Slot {slot}</td>
-									<td className="capitalize">{renderPerkName(perk)}</td>
-								</tr>
-							))
-						) : (
-							<tr>
-								<td colSpan={2}>No normal perks equipped.</td>
-							</tr>
-						)}
-					</tbody>
-				</table>
-			</div>
+		<div className="w-full flex flex-col lg:flex-row gap-2 justify-center h-100 ">
+			{response.stats.perkslot?.normal && Object.values(response.stats.perkslot.normal).some((perk) => perk) ? (
+				Object.entries(response.stats.perkslot.normal).map(([slot, perk]) => {
+					const perkObj = perks[perk as keyof typeof perks];
+					if (!perkObj) {
+						console.log("could not get " + perk);
+						return <></>;
+					}
+					return (
+						<div
+							key={perkObj.name}
+							className="flex items-center justify-center h-35 w-35 bg-cover bg-center relative"
+							style={{
+								backgroundImage: `url('/ranked/invSlot.png')`,
+							}}
+						>
+							<img
+								src={"/perks/" + perkObj.icon}
+								height={120}
+								width={120}
+								style={{ imageRendering: "pixelated" }}
+								className="peer"
+								alt=""
+								tabIndex={0}
+								onClick={(e) => {
+									const tooltip = e.currentTarget.nextSibling as HTMLElement;
+									if (tooltip) {
+										tooltip.classList.toggle("opacity-100");
+										tooltip.classList.toggle("pointer-events-auto");
+									}
+								}}
+								onBlur={(e) => {
+									const tooltip = e.currentTarget.nextSibling as HTMLElement;
+									if (tooltip) {
+										tooltip.classList.remove("opacity-100");
+										tooltip.classList.remove("pointer-events-auto");
+									}
+								}}
+							/>
+							<div
+								className="fixed lg:absolute top-full left-[-1/10] mt-2 w-full lg:w-100 p-2 rounded items-center justify-center opacity-0 group-hover:opacity-100 peer-hover:opacity-100 transition-opacity bg-black/90 z-10 text-xl text-white text-left pointer-events-none group-focus-within:opacity-100 group-focus-within:pointer-events-auto"
+								tabIndex={-1}
+							>
+								{/* <MinecraftText>{perkObj.name}</MinecraftText> */}
+								{Object.values(perkObj.lore).map((loreLine, index) => (
+									<MinecraftText key={index}>{loreLine}</MinecraftText>
+								))}
+							</div>
+						</div>
+					);
+				})
+			) : (
+				<span>No perks equipped?!</span>
+			)}
 		</div>
 	);
 }
