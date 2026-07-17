@@ -1,17 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { useMapRotationAll } from "../../hooks/useMapRotation";
+import { SWMap, useMapRotationAll } from "../../hooks/useMapRotation";
 import { timeAgo } from "@/app/utils/Utils";
-
-type Map = {
-	map_name: string;
-	added: number[];
-	removed: number[];
-	last_change: number;
-	last_status: boolean;
-	createdAt: string;
-	updatedAt: string;
-};
+import twemoji from "@twemoji/api";
 
 type SortKey = "map_name" | "last_change" | "last_status";
 type SortDirection = "asc" | "desc";
@@ -40,8 +31,8 @@ const RotationPage = () => {
 	const sortedMaps = React.useMemo(() => {
 		if (!allMapsData?.maps) return [];
 		const query = search.trim().toLowerCase();
-		const filtered = query ? allMapsData.maps.filter((map: Map) => map.map_name.toLowerCase().includes(query)) : allMapsData.maps;
-		return [...filtered].sort((a: Map, b: Map) => {
+		const filtered = query ? allMapsData.maps.filter((map: SWMap) => map.map_name.toLowerCase().includes(query)) : allMapsData.maps;
+		return [...filtered].sort((a: SWMap, b: SWMap) => {
 			let comparison = 0;
 			if (sortKey === "map_name") {
 				comparison = a.map_name.localeCompare(b.map_name);
@@ -59,10 +50,40 @@ const RotationPage = () => {
 	const pageShell = (content: React.ReactNode) => (
 		<div className="flex flex-col p-4">
 			<h1 className="text-4xl font-bold text-center my-2">Maps</h1>
-			<span className="font-semibold text-center mb-2 px-3">Includes all Solo/Teams maps that can occur in new rotations</span>
+			<span className="font-semibold text-center mb-0 px-3">Includes all Solo/Teams maps that can occur in new rotations</span>
+			<span className="font-semibold text-center mb-2 px-3">Click on map names for more information</span>
 			{content}
 		</div>
 	);
+
+	const getSeasonIcon = (season: string): React.ReactNode => {
+		if (season == "") return null;
+		let emoji;
+		switch (season) {
+			case "Summer":
+				emoji = "☀️";
+				break;
+			case "Halloween":
+				emoji = "🎃";
+				break;
+			case "Christmas":
+				emoji = "❄️";
+				break;
+			case "Easter":
+				emoji = "🐰";
+				break;
+			default:
+				return null;
+		}
+		return (
+			<span
+				dangerouslySetInnerHTML={{
+					__html: twemoji.parse(emoji, { folder: "svg", ext: ".svg" }),
+				}}
+				style={{ width: 28, height: 28, display: "inline-block" }}
+			/>
+		);
+	};
 
 	if (allMapsIsLoading) {
 		return pageShell(<div className="w-full overflow-x-auto rounded-xl lg:p-8 h-200" />);
@@ -104,10 +125,15 @@ const RotationPage = () => {
 				</thead>
 				<tbody>
 					{sortedMaps.length > 0 ? (
-						sortedMaps.map((map: Map) => (
+						sortedMaps.map((map: SWMap) => (
 							<tr key={map.map_name}>
 								<td className="p-2 font-semibold text-lg">
-									<a href={`/tools/rotation/map?mapName=${map.map_name}`}>{map.map_name}</a>
+									<a href={`/tools/rotation/map?mapName=${map.map_name}`}>
+										<span className="h-full flex flex-row align-middle gap-2">
+											{map.map_name}
+											{getSeasonIcon(map.seasonalInfo.season ?? "")}
+										</span>
+									</a>
 								</td>
 								<td className="p-2 font-semibold text-lg" key={map.last_change}>
 									{timeAgo(map.last_change)}
