@@ -220,7 +220,7 @@ const Legacy: React.FC<OverallResponse> = (response) => {
 								</tr>
 								<tr className="border-b-1 border-white">
 									<td>Rush Solo Wins</td>
-									<td>{(response.stats.lab_win_rush_lab ?? 0).toLocaleString()}</td>
+									<td>{(response.stats.lab_win_rush_lab_solo ?? 0).toLocaleString()}</td>
 								</tr>
 								<tr className="border-b-1 border-white">
 									<td>Rush Team Wins</td>
@@ -237,6 +237,11 @@ const Legacy: React.FC<OverallResponse> = (response) => {
 								<tr className="border-b-1 border-white">
 									<td>Slime Team Wins</td>
 									<td>{(response.stats.lab_win_slime_lab_team ?? 0).toLocaleString()}</td>
+								</tr>
+
+								<tr className="border-b-1 border-white">
+									<td>Hunters vs Beasts Wins</td>
+									<td>{(response.stats.lab_win_hunters_vs_beasts_lab ?? 0).toLocaleString()}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -260,7 +265,6 @@ const Legacy: React.FC<OverallResponse> = (response) => {
 									<td>Lucky Blocks Team Wins</td>
 									<td>{(response.stats.lab_win_lucky_blocks_lab_team ?? 0).toLocaleString()}</td>
 								</tr>
-
 								<tr className="border-b-1 border-white">
 									<td>
 										<br></br>
@@ -270,16 +274,16 @@ const Legacy: React.FC<OverallResponse> = (response) => {
 									</td>
 								</tr>
 								<tr className="border-b-1 border-white">
-									<td>Hunters vs Beasts Wins</td>
-									<td>{(response.stats.lab_win_hunters_vs_beasts_lab ?? 0).toLocaleString()}</td>
+									<td>TNT Madness Wins</td>
+									<td>{(response.stats.lab_win_tnt_madness_lab ?? 0).toLocaleString()}</td>
 								</tr>
 								<tr className="border-b-1 border-white">
-									<td>
-										<br></br>
-									</td>
-									<td>
-										<br></br>
-									</td>
+									<td>TNT Madness Solo Wins</td>
+									<td>{(response.stats.lab_win_tnt_madness_lab_solo ?? 0).toLocaleString()}</td>
+								</tr>
+								<tr className="border-b-1 border-white">
+									<td>TNT Madness Team Wins</td>
+									<td>{(response.stats.lab_win_tnt_madness_lab_team ?? 0).toLocaleString()}</td>
 								</tr>
 							</tbody>
 						</table>

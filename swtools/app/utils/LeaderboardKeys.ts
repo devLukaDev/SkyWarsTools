@@ -508,7 +508,7 @@ export const keys: LeaderboardKey[] = [
 	{ name: "Challenge Wins UHC", value: "challenge_wins_uhc" },
 	{ name: "Challenge Attempts Ultimate Warrior", value: "challenge_attempts_ultimate_warrior" },
 	{ name: "Challenge Wins Ultimate Warrior", value: "challenge_wins_ultimate_warrior" },
-	
+
 	// Custom leaderboards
 	{ name: "Descent Progress", value: "customs_descentProgress" },
 	{ name: "Kills Normal", value: "customs_kills_normal" },
@@ -528,15 +528,18 @@ export const keys: LeaderboardKey[] = [
 	{ name: "Kits Max Prestige Ranked", value: "customs_kitsMaxPrestigeRanked" },
 	{ name: "Kits Max Prestige", value: "customs_kitsMaxPrestige" },
 
-	{ name: "Lab: Rush Wins", value: "lab_win_rush_lab"}, // – Rush Wins
-	{ name: "Lab: Rush Solo Wins", value: "lab_win_rush_lab_solo"}, // – Rush Solo Wins
-	{ name: "Lab: Rush Team Wins", value: "lab_win_rush_lab_team"}, // – Rush Team Wins
-	{ name: "Lab: Slime Wins", value: "lab_win_slime_lab"}, // – Slime Wins
-	{ name: "Lab: Slime Solo Wins", value: "lab_win_slime_lab_solo"}, // – Slime Solo Wins
-	{ name: "Lab: Slime Team Wins", value: "lab_win_slime_lab_team"}, // – Slime Team Wins
-	{ name: "Lab: Lucky Blocks Wins", value: "lab_win_lucky_blocks_lab"}, // – LB Wins
-	{ name: "Lab: Lucky Blocks Solo Wins", value: "lab_win_lucky_blocks_lab_solo"}, // – LB Solo Wins
-	{ name: "Lab: Lucky Blocks Team Wins", value: "lab_win_lucky_blocks_lab_team"}, // – LB Team Wins
-	{ name: "Lab: Hunters vs Beasts Wins", value: "lab_win_hunters_vs_beasts_lab"}, //
+	{ name: "Lab: Rush Wins", value: "lab_win_rush_lab" }, // – Rush Wins
+	{ name: "Lab: Rush Solo Wins", value: "lab_win_rush_lab_solo" }, // – Rush Solo Wins
+	{ name: "Lab: Rush Team Wins", value: "lab_win_rush_lab_team" }, // – Rush Team Wins
+	{ name: "Lab: Slime Wins", value: "lab_win_slime_lab" }, // – Slime Wins
+	{ name: "Lab: Slime Solo Wins", value: "lab_win_slime_lab_solo" }, // – Slime Solo Wins
+	{ name: "Lab: Slime Team Wins", value: "lab_win_slime_lab_team" }, // – Slime Team Wins
+	{ name: "Lab: TNT Madness Wins", value: "lab_win_tnt_madness_lab" },
+	{ name: "Lab: TNT Madness Solo Wins", value: "lab_win_tnt_madness_lab_solo" },
+	{ name: "Lab: TNT Madness Team Wins", value: "lab_win_tnt_madness_lab_team" },
+	{ name: "Lab: Lucky Blocks Wins", value: "lab_win_lucky_blocks_lab" }, // – LB Wins
+	{ name: "Lab: Lucky Blocks Solo Wins", value: "lab_win_lucky_blocks_lab_solo" }, // – LB Solo Wins
+	{ name: "Lab: Lucky Blocks Team Wins", value: "lab_win_lucky_blocks_lab_team" }, // – LB Team Wins
+	{ name: "Lab: Hunters vs Beasts Wins", value: "lab_win_hunters_vs_beasts_lab" }, //
 	// { name: "Lab: Hunters vs Beasts Solo Wins", value: "lab_win_hunters_vs_beasts_lab_solo"}, // there is no team, usually solo = overall
 ];

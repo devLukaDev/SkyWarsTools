@@ -17,9 +17,9 @@ type MapRotationCurrentResponse = {
 
 type MapRotationMapResponse = {
 	success: boolean;
-	map: Map
+	map: SWMap
 };
-type Map = {
+export type SWMap = {
 	map_name: string;
 	added: number[];
 	removed: number[];
@@ -27,10 +27,18 @@ type Map = {
 	last_status: boolean;
 	createdAt: string;
 	updatedAt: string;
+	blockStats: {
+		ores: Record<string, string>;
+	};
+	seasonalInfo: {
+		original: null | string;
+		season: null | string;
+		seasonal: boolean;
+	};
 };
 type MapRotationAllResponse = {
 	success: boolean;
-	maps: Map[]
+	maps: SWMap[]
 }
 
 export const useMapRotationCurrent = () => {

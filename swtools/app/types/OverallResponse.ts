@@ -115,6 +115,9 @@ export interface Stats {
 	lab_win_lucky_blocks_lab?: number; // – LB Wins
 	lab_win_lucky_blocks_lab_solo?: number; // – LB Solo Wins
 	lab_win_lucky_blocks_lab_team?: number; // – LB Team Wins
+	lab_win_tnt_madness_lab?: number;
+	lab_win_tnt_madness_lab_solo?: number;
+	lab_win_tnt_madness_lab_team?: number;
 	lab_win_hunters_vs_beasts_lab?: number; //
 	lab_win_hunters_vs_beasts_lab_solo?: number; // there is no team, usually solo = overall
 

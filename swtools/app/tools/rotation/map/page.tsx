@@ -1,4 +1,5 @@
 "use client";
+import BlockCounts from "@/app/components/tools/maps/BlockCounts";
 import { useMapRotationMap } from "@/app/hooks/useMapRotation";
 import { timeAgo } from "@/app/utils/Utils";
 import { useSearchParams } from "next/navigation";
@@ -178,26 +179,28 @@ const MapPageContent = () => {
 		);
 	}
 
+	console.log(mapData);
+
 	return (
 		<div className="flex flex-col p-4">
-			<h1 className="text-4xl font-bold text-center my-2">{mapData?.map.map_name ?? "Map Details"}</h1>
-			<span className="font-semibold text-center mb-2 px-3">Rotation history for this map</span>
+			<h1 className="text-5xl font-bold text-center">{mapData?.map.map_name ?? "Map Details"}</h1>
 
 			{mapData && (
-				<>
+				<div className="py-4 lg:p-8">
 					{/* Map image */}
-					<div className="px-4 lg:px-8 pb-8">
+
+					<div className="mb-4">
+						<h2 className="text-3xl mb-2">General information</h2>
 						<img
 							src={`${process.env.NEXT_PUBLIC_SKYWARSTOOLS_API}/maps/image?q=large&name=${encodeURIComponent(params.get("mapName") || "")}`}
 							alt={`${mapData.map.map_name} image`}
 							className="w-full rounded-t-lg"
 						/>
-						<table className="lg:w-full bg-content rounded-b-lg ">
+						<table className="w-full bg-content rounded-b-lg ">
 							<tbody>
 								<tr>
-									<td className="p-2 font-semibold text-lg text-accent">Last Change</td>
-									<td className="p-2 font-semibold text-lg">{timeAgo(mapData.map.last_change)}</td>
-									<td className="p-2 font-semibold text-lg">
+									<td className="p-2 font-semibold text-lg text-accent">Status</td>
+									<td className="p-2 font-semibold text-lg text-right">
 										<span
 											className={`px-3 py-1 rounded-full font-semibold ${
 												mapData.map.last_status ? "bg-green-200 text-green-800" : "bg-red-200 text-red-800"
@@ -207,63 +210,86 @@ const MapPageContent = () => {
 										</span>
 									</td>
 								</tr>
+								<tr>
+									<td className="p-2 font-semibold text-lg text-accent">Last Change</td>
+									<td className="p-2 font-semibold text-lg text-right">{timeAgo(mapData.map.last_change)}</td>
+								</tr>
+								<tr>
+									<td className="p-2 font-semibold text-lg text-accent">Seasonal</td>
+									<td className="p-2 font-semibold text-lg text-right">
+										{mapData.map.seasonalInfo.season ? mapData.map.seasonalInfo.season : "No"}
+									</td>
+								</tr>
+								{mapData.map.seasonalInfo.original && (
+									<tr>
+										<td className="p-2 font-semibold text-lg text-accent">Original Map</td>
+										<td className="p-2 font-semibold text-lg text-right">
+											<a href={"/tools/rotation/map?mapName=" + mapData.map.seasonalInfo.original}>{mapData.map.seasonalInfo.original}</a>
+										</td>
+									</tr>
+								)}
 							</tbody>
 						</table>
+						{mapData.map.blockStats && <BlockCounts ores={mapData.map.blockStats.ores} />}
 					</div>
 
 					{/* Rotation table */}
-					<div className="w-full overflow-x-auto rounded-xl p-4 lg:p-8">
-						<table className="w-150 lg:w-full bg-content rounded-lg">
-							<thead className="text-left text-accent border-b-2">
-								<tr>
-									<th className={headerClass}>Added</th>
-									<th className={headerClass}>In Rotation</th>
-									<th className={headerClass}>Removed</th>
-								</tr>
-							</thead>
-							<tbody>
-								{rotationRows.map((row, i) => (
-									<tr key={i} className={row.daysInRotation == null ? "bg-red-900/30" : ""}>
-										<td className="p-2 font-semibold text-lg">
-											{row.added ? new Date(row.added * 1000).toLocaleString() : "-"}
-										</td>
-										<td className="p-2 font-semibold text-lg">
-											{row.daysInRotation === null
-												? "-"
-												: row.isOngoing
-													? `${row.daysInRotation} days (ongoing)`
-													: `${row.daysInRotation} days`}
-										</td>
-										<td className="p-2 font-semibold text-lg">
-											{row.removed ? new Date(row.removed * 1000).toLocaleString() : "-"}
-										</td>
+					<div className="w-full rounded-xl mb-4">
+						<h2 className="text-3xl mb-2">Rotation history</h2>
+						<div className="overflow-x-auto ">
+							<table className="w-150 lg:w-full bg-content rounded-lg">
+								<thead className="text-left text-accent border-b-2">
+									<tr>
+										<th className={headerClass}>Added</th>
+										<th className={headerClass}>In Rotation</th>
+										<th className={headerClass}>Removed</th>
 									</tr>
-								))}
-							</tbody>
-						</table>
-					</div>
-
-					{/* Anomalies */}
-					{rotationData.anomalies.length > 0 && (
-						<div className="mx-4 lg:mx-8 m-4 rounded-md border border-yellow-500 bg-yellow-950/30 p-4 text-yellow-100">
-							<p className="font-semibold mb-2">Potential Misaligned Datapoints*</p>
-							<ul className="list-disc pl-5 space-y-1">
-								{rotationData.anomalies.map((anomaly, i) => (
-									<li key={`${anomaly.type}-${anomaly.timestamp}-${i}`}>
-										{new Date(anomaly.timestamp * 1000).toLocaleString()} — {anomaly.message}
-									</li>
-								))}
-							</ul>
-							<br></br>
-							<span className="text-sm">
-								<i>
-									* The datapoints are all from the forums thread, but this forums thread is not fully accurate. Not only
-									have seasonal maps been omitted in most rotation posts, random errors are also present for all maps.
-								</i>
-							</span>
+								</thead>
+								<tbody>
+									{rotationRows.map((row, i) => (
+										<tr key={i} className={row.daysInRotation == null ? "bg-red-900/30" : ""}>
+											<td className="p-2 font-semibold text-lg">
+												{row.added ? new Date(row.added * 1000).toLocaleString() : "-"}
+											</td>
+											<td className="p-2 font-semibold text-lg">
+												{row.daysInRotation === null
+													? "-"
+													: row.isOngoing
+														? `${row.daysInRotation} days (ongoing)`
+														: `${row.daysInRotation} days`}
+											</td>
+											<td className="p-2 font-semibold text-lg">
+												{row.removed ? new Date(row.removed * 1000).toLocaleString() : "-"}
+											</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
 						</div>
-					)}
-				</>
+
+						{/* Anomalies */}
+						{rotationData.anomalies.length > 0 && (
+							<div className="mt-4 rounded-md border border-yellow-500 bg-yellow-950/30 p-4 text-yellow-100">
+								<p className="font-semibold mb-2">Potential Misaligned Datapoints*</p>
+								<ul className="list-disc pl-5 space-y-1">
+									{rotationData.anomalies.map((anomaly, i) => (
+										<li key={`${anomaly.type}-${anomaly.timestamp}-${i}`}>
+											{new Date(anomaly.timestamp * 1000).toLocaleString()} — {anomaly.message}
+										</li>
+									))}
+								</ul>
+								<br></br>
+								<span className="text-sm">
+									<i>
+										* The datapoints are all from the forums thread, but this forums thread is not fully accurate. Not
+										only have seasonal maps been omitted in most rotation posts, random errors are also present for all
+										maps.
+									</i>
+								</span>
+							</div>
+						)}
+					</div>
+				</div>
 			)}
 		</div>
 	);

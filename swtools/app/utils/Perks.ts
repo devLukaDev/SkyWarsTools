@@ -1,7 +1,7 @@
 // Contains all perks and their lore and stuff
-const perks = [
-	{
-		name: "§aBridger",
+export const perks = {
+	solo_bridger: {
+		name: "Bridger",
 		lore: {
 			"0": "§o§aBridger§r",
 			"1": "§5§o§7§8Perk",
@@ -13,9 +13,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Oak_Planks.png",
 	},
-	{
-		name: "§aKnowledge",
+	solo_knowledge: {
+		name: "Knowledge",
 		lore: {
 			"0": "§o§aKnowledge§r",
 			"1": "§5§o§7§8Perk",
@@ -32,8 +33,8 @@ const perks = [
 		},
 		icon: "Bottle_o'_Enchanting.png",
 	},
-	{
-		name: "§aLucky Charm",
+	solo_lucky_charm: {
+		name: "Lucky Charm",
 		lore: {
 			"0": "§o§aLucky Charm§r",
 			"1": "§5§o§7§8Perk",
@@ -49,9 +50,10 @@ const perks = [
 			"11": "§5§o",
 			"12": "§5§o",
 		},
+		icon: "Rabbit's_Foot.png",
 	},
-	{
-		name: "§aMining Expertise",
+	solo_mining_expertise: {
+		name: "Mining Expertise",
 		lore: {
 			"0": "§o§aMining Expertise§r",
 			"1": "§5§o§7§8Perk",
@@ -67,9 +69,10 @@ const perks = [
 			"11": "§5§o",
 			"12": "§5§o",
 		},
+		icon: "Iron_Pickaxe.png",
 	},
-	{
-		name: "§aResistance Boost",
+	solo_resistance_boost: {
+		name: "Resistance Boost",
 		lore: {
 			"0": "§o§aResistance Boost§r",
 			"1": "§5§o§7§8Perk",
@@ -81,9 +84,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Iron_Ingot.png",
 	},
-	{
-		name: "§aSavior",
+	solo_savior: {
+		name: "Savior",
 		lore: {
 			"0": "§o§aSavior§r",
 			"1": "§5§o§7§8Perk",
@@ -94,9 +98,10 @@ const perks = [
 			"6": "§5§o",
 			"7": "§5§o",
 		},
+		icon: "Golden_Apple.png",
 	},
-	{
-		name: "§aAnnoy-o-mite",
+	solo_annoy_o_mite: {
+		name: "Annoy-o-mite",
 		lore: {
 			"0": "§o§aAnnoy-o-mite§r",
 			"1": "§5§o§7§8Perk",
@@ -108,9 +113,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Silverfish_Spawn_Egg.png",
 	},
-	{
-		name: "§aArrow Recovery",
+	solo_arrow_recovery: {
+		name: "Arrow Recovery",
 		lore: {
 			"0": "§o§aArrow Recovery§r",
 			"1": "§5§o§7§8Perk",
@@ -122,9 +128,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Hopper.png",
 	},
-	{
-		name: "§aBlazing Arrows",
+	solo_blazing_arrows: {
+		name: "Blazing Arrows",
 		lore: {
 			"0": "§o§aBlazing Arrows§r",
 			"1": "§5§o§7§8Perk",
@@ -140,9 +147,10 @@ const perks = [
 			"11": "§5§o",
 			"12": "§5§o",
 		},
+		icon: "Blaze_Powder.png",
 	},
-	{
-		name: "§aEnvironmental Expert",
+	solo_environmental_expert: {
+		name: "Environmental Expert",
 		lore: {
 			"0": "§o§aEnvironmental Expert§r",
 			"1": "§5§o§7§8Perk",
@@ -154,9 +162,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Oak_Sapling.png",
 	},
-	{
-		name: "§aFat",
+	solo_fat: {
+		name: "Fat",
 		lore: {
 			"0": "§o§aFat§r",
 			"1": "§5§o§7§8Perk",
@@ -168,9 +177,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Steak.png",
 	},
-	{
-		name: "§aSpeed Boost",
+	solo_speed_boost: {
+		name: "Speed Boost",
 		lore: {
 			"0": "§o§aSpeed Boost§r",
 			"1": "§5§o§7§8Perk",
@@ -182,9 +192,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Sugar.png",
 	},
-	{
-		name: "§aBarbarian",
+	solo_barbarian: {
+		name: "Barbarian",
 		lore: {
 			"0": "§o§aBarbarian§r",
 			"1": "§5§o§7§8Perk",
@@ -198,9 +209,10 @@ const perks = [
 			"9": "",
 			"10": "§9+5 Attack Damage",
 		},
+		icon: "Iron_Axe.png",
 	},
-	{
-		name: "§aBlack Magic",
+	solo_black_magic: {
+		name: "Black Magic",
 		lore: {
 			"0": "§o§aBlack Magic§r",
 			"1": "§5§o§7§8Perk",
@@ -216,9 +228,10 @@ const perks = [
 			"11": "§5§o",
 			"12": "§5§o",
 		},
+		icon: "Cauldron.png",
 	},
-	{
-		name: "§aFrost",
+	solo_frost: {
+		name: "Frost",
 		lore: {
 			"0": "§o§aFrost§r",
 			"1": "§5§o§7§8Perk",
@@ -230,9 +243,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Snowball.png",
 	},
-	{
-		name: "§aMarksmanship",
+	solo_marksmanship: {
+		name: "Marksmanship",
 		lore: {
 			"0": "§o§aMarksmanship§r",
 			"1": "§5§o§7§8Perk",
@@ -244,9 +258,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Bow.png",
 	},
-	{
-		name: "§aNecromancer",
+	solo_necromancer: {
+		name: "Necromancer",
 		lore: {
 			"0": "§o§aNecromancer§r",
 			"1": "§5§o§7§8Perk",
@@ -258,9 +273,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Rotten_Flesh.png",
 	},
-	{
-		name: "§aRobbery",
+	solo_robbery: {
+		name: "Robbery",
 		lore: {
 			"0": "§o§aRobbery§r",
 			"1": "§5§o§7§8Perk",
@@ -272,9 +288,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Iron_Bars.png",
 	},
-	{
-		name: "§aApothecary",
+	solo_apothecary: {
+		name: "Apothecary",
 		lore: {
 			"0": "§o§aApothecary§r",
 			"1": "§5§o§7§8Perk",
@@ -286,11 +303,12 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Brewing_Stand.png",
 	},
-	{
-		name: "§aDiamond In The Rough V",
+	solo_diamond_in_the_rough: {
+		name: "Diamond In The Rough",
 		lore: {
-			"0": "§o§aDiamond In The Rough V§r",
+			"0": "§o§aDiamond In The Rough§r",
 			"1": "§5§o§7§8Perk",
 			"2": "§5§o",
 			"3": "§5§o§7§7§7Grants a §a25% §7chance to earn a",
@@ -300,9 +318,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Diamond.png",
 	},
-	{
-		name: "§aDouble-Edged Sword",
+	solo_double_edged_sword: {
+		name: "Double-Edged Sword",
 		lore: {
 			"0": "§o§aDouble-Edged Sword§r",
 			"1": "§5§o§7§8Perk",
@@ -317,9 +336,10 @@ const perks = [
 			"10": "",
 			"11": "§9+4 Attack Damage",
 		},
+		icon: "Wooden_Sword.png",
 	},
-	{
-		name: "§aDragon's Pledge",
+	solo_dragons_pledge: {
+		name: "Dragon's Pledge",
 		lore: {
 			"0": "§o§aDragon's Pledge§r",
 			"1": "§5§o§7§8Perk",
@@ -334,8 +354,8 @@ const perks = [
 		},
 		icon: "End_Stone.png",
 	},
-	{
-		name: "§aEnder End Game",
+	solo_ender_end_game: {
+		name: "Ender End Game",
 		lore: {
 			"0": "§o§aEnder End Game§r",
 			"1": "§5§o§7§8Perk",
@@ -347,9 +367,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "End_Stone.png",
 	},
-	{
-		name: "§aFortune Teller",
+	fortune_teller: {
+		name: "Fortune Teller",
 		lore: {
 			"0": "§o§aFortune Teller§r",
 			"1": "§5§o§7§8Perk",
@@ -362,9 +383,10 @@ const perks = [
 			"8": "§5§o",
 			"9": "§5§o",
 		},
+		icon: "Enchanting_Table.gif",
 	},
-	{
-		name: "§aFruit Finder",
+	fruit_finder: {
+		name: "Fruit Finder",
 		lore: {
 			"0": "§o§aFruit Finder§r",
 			"1": "§5§o§7§8Perk",
@@ -376,9 +398,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Apple.png",
 	},
-	{
-		name: "§aHide and Seek",
+	hide_and_seek: {
+		name: "Hide and Seek",
 		lore: {
 			"0": "§o§aHide and Seek§r",
 			"1": "§5§o§7§8Perk",
@@ -390,9 +413,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Compass.gif",
 	},
-	{
-		name: "§aLibrarian",
+	librarian: {
+		name: "Librarian",
 		lore: {
 			"0": "§o§aLibrarian§r",
 			"1": "§5§o§7§8Perk",
@@ -404,9 +428,10 @@ const perks = [
 			"7": "§5§o",
 			"8": "§5§o",
 		},
+		icon: "Bookshelf.png",
 	},
-	{
-		name: "§aTenacity",
+	tenacity: {
+		name: "Tenacity",
 		lore: {
 			"0": "§o§aTenacity§r",
 			"1": "§5§o§7§8Perk",
@@ -417,5 +442,6 @@ const perks = [
 			"6": "§5§o",
 			"7": "§5§o",
 		},
+		icon: "Magma_Cream.png",
 	},
-];
+};
