@@ -107,7 +107,7 @@ const PropertyLinking: React.FC<PropertyLinkingProps> = ({ linked, uuid }) => {
 								<Tooltip title={uuid}>
 									<Link href={`/redirect?uuid=${uuid}`}>
 										<Image
-											src={`${process.env.NEXT_PUBLIC_HEADS_API}/head/${uuid}`}
+											src={`${process.env.NEXT_PUBLIC_HEADS_API}/${uuid}`}
 											width={50}
 											height={50}
 											className="lg:rounded-lg w-30 lg:w-10"

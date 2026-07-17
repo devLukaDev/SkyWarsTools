@@ -30,6 +30,7 @@ const perks = [
 			"10": "§5§o",
 			"11": "§5§o",
 		},
+		icon: "Bottle_o'_Enchanting.png",
 	},
 	{
 		name: "§aLucky Charm",
@@ -331,6 +332,7 @@ const perks = [
 			"8": "§5§o",
 			"9": "§5§o",
 		},
+		icon: "End_Stone.png",
 	},
 	{
 		name: "§aEnder End Game",
