@@ -35,7 +35,7 @@ const Gameplay: React.FC<OverallResponse> = (response) => {
 					selectedClassName={"selected-tab"}
 					className={"whitespace-nowrap p-1 px-3 rounded-xl font-semibold cursor-pointer animate-press"}
 				>
-					Style
+					Playstyle
 				</Tab>
 			</TabList>
 
