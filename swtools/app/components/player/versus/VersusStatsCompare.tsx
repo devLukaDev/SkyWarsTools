@@ -279,7 +279,7 @@ function VersusStatsCompare({
 							{/* Mobile header row with avatars */}
 							<th className="p-2 text-3xl w-[35%] truncate">
 								<Image
-									src={`${process.env.NEXT_PUBLIC_HEADS_API}/head/${player1.player}/40`}
+									src={`${process.env.NEXT_PUBLIC_HEADS_API}/${player1.player}`}
 									width={40}
 									height={40}
 									className="rounded-sm ml-2"
@@ -293,7 +293,7 @@ function VersusStatsCompare({
 								<span className="inline-block align-middle"></span>
 								<span className="inline-block align-middle">
 									<Image
-										src={`${process.env.NEXT_PUBLIC_HEADS_API}/head/${player2.player}/40`}
+										src={`${process.env.NEXT_PUBLIC_HEADS_API}/${player2.player}`}
 										width={40}
 										height={40}
 										className="rounded-sm mr-2"

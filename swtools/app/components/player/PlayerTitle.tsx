@@ -128,7 +128,7 @@ const PlayerTitle: React.FC<PlayerTitleProps> = ({ response }) => {
 					width={100}
 					height={100}
 					className="rounded h-20 w-20 lg:h-28 lg:w-28 mb-6 lg:mb-12 mx-2 lg:mx-4 z-10 hidden lg:inline"
-					src={`${process.env.NEXT_PUBLIC_HEADS_API}/head/${response.player}/100`}
+					src={`${process.env.NEXT_PUBLIC_HEADS_API}/${response.player}`}
 				/>
 				{/* Online status indicator overlay */}
 				<span

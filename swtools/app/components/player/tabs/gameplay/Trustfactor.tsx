@@ -121,7 +121,7 @@ function SourceCard({
 	children: ReactNode;
 }) {
 	return (
-		<div className="w-64 h-100 flex flex-col bg-layer rounded-lg p-4">
+		<div className="w-full lg:w-64 h-100 flex flex-col bg-layer rounded-lg p-4">
 			<div className="flex items-center justify-between mb-1 pb-3 border-b border-white/[0.08]">
 				<h1 className="text-lg font-semibold text-white tracking-tight">{title}</h1>
 				<CreditBadge credit={credit} name={title} />

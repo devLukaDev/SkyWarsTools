@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
 	).toLocaleString()}🥇 ${(statsData.stats.wins_team ?? 0).toLocaleString()} 💀 ${(statsData.stats.losses_team ?? 0).toLocaleString()}
 `;
 
-	const playerHeadUrl = `${process.env.NEXT_PUBLIC_HEADS_API}/head/${statsData.uuid}/50`;
+	const playerHeadUrl = `${process.env.NEXT_PUBLIC_HEADS_API}/${statsData.uuid}`;
 
 	return {
 		title: `${statsData.player} | SkyWarsTools`,

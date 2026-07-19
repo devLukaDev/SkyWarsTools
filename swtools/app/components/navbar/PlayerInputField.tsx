@@ -163,7 +163,7 @@ const PlayerInputField = () => {
 									}}
 								>
 									<Image
-										src={`${process.env.NEXT_PUBLIC_HEADS_API}/head/${name}/25`}
+										src={`${process.env.NEXT_PUBLIC_HEADS_API}/${name}`}
 										width={25}
 										height={25}
 										className="rounded-lg"

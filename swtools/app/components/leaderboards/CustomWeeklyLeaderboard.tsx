@@ -157,7 +157,7 @@ const CustomWeeklyLeaderboard = () => {
 							const rank = getPlayerRank(mockOverallResponse);
 							const levelString = row.entry.display.levelFormattedWithBrackets ?? "§7[§70✯§7]§r ";
 							const fullName = `${rank.prefix} ${row.entry.player}`;
-							const playerFaceUrl = `${process.env.NEXT_PUBLIC_HEADS_API}/head/${row.entry.uuid}/24`;
+							const playerFaceUrl = `${process.env.NEXT_PUBLIC_HEADS_API}/${row.entry.uuid}`;
 
 							return (
 								<tr key={row.entry.uuid} className="border-b last:border-b-0 hover:bg-accent/10 transition-colors">

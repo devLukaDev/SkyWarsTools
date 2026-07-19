@@ -5,13 +5,13 @@ const nextConfig: NextConfig = {
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname: "www.mc-heads.net",
+				hostname: "mc-heads.net",
 				pathname: "/avatar/**",
 			},
 			{
 				protocol: "https",
 				hostname: "api.mcheads.org",
-				pathname: "/head/**"
+				pathname: "/head/**",
 			},
 			{
 				protocol: "https",

@@ -76,7 +76,7 @@ const SnapshotSelection: React.FC<SnapshotSelectionProps> = ({ playerName, pageT
 				>
 					<div className="w-10 h-10 relative">
 						<Image
-							src={`${process.env.NEXT_PUBLIC_HEADS_API}/head/${playerName}/64`}
+							src={`${process.env.NEXT_PUBLIC_HEADS_API}/${playerName}`}
 							alt={playerName}
 							fill
 							className="rounded"
@@ -101,7 +101,7 @@ const SnapshotSelection: React.FC<SnapshotSelectionProps> = ({ playerName, pageT
 					>
 						<div className="w-10 h-10 relative">
 							<Image
-								src={`${process.env.NEXT_PUBLIC_HEADS_API}/head/${snap.player}/64`}
+								src={`${process.env.NEXT_PUBLIC_HEADS_API}/${snap.player}`}
 								alt={snap.player}
 								fill
 								className="rounded"
