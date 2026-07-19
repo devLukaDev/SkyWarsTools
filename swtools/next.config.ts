@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
 			},
 			{
 				protocol: "https",
+				hostname: "www.mc-heads.net",
+				pathname: "/avatar/**",
+			},
+			{
+				protocol: "https",
 				hostname: "api.mcheads.org",
 				pathname: "/head/**",
 			},
