@@ -608,15 +608,15 @@
 				"cost": 3
 			},
 			{
-				"text": "§5§7§7Quests reward §8+5%➜§a+20% §6Coins§7.",
+				"text": "§5§7§7Quests reward §8+10%➜§a+20% §6Coins§7.",
 				"cost": 3
 			},
 			{
-				"text": "§5§7§7Quests reward §8+10%➜§a+30% §6Coins§7.",
+				"text": "§5§7§7Quests reward §8+20%➜§a+30% §6Coins§7.",
 				"cost": 3
 			},
 			{
-				"text": "§5§7§7Quests reward §8+15%➜§a+40% §6Coins§7.",
+				"text": "§5§7§7Quests reward §8+3-%➜§a+40% §6Coins§7.",
 				"cost": 3
 			}
 		],
