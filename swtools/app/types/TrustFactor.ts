@@ -25,26 +25,12 @@ export interface WinstrTag {
 	description: string;
 }
 
-export interface UrchinResponse {
-	uuid: string;
-	tags: UrchinTag[];
-}
-
-export interface UrchinTag {
-	type: string;
-	reason: string;
-	added_by_id: number;
-	added_by_username: string;
-	added_on: Date;
-	hide_username: boolean;
-}
-
-export interface SeraphResponse {
-	tags: SeraphTag[];
+export interface CubelifyResponse {
+	tags: CubelifyTag[];
 	timestamp: Date;
 }
 
-export interface SeraphTag {
+export interface CubelifyTag {
 	icon: string;
 	tooltip: string;
 	color: number;
@@ -63,7 +49,7 @@ export interface TrustfactorResponse {
 	externals: {
 		aurora: { tags: AuroraTag[]; credit: Credit };
 		winstr: { tags: WinstrTag[]; credit: Credit };
-		urchin: { tags: UrchinTag[]; credit: Credit };
-		seraph: { tags: SeraphTag[]; credit: Credit };
+		urchin: { tags: CubelifyTag[]; credit: Credit };
+		seraph: { tags: CubelifyTag[]; credit: Credit };
 	};
 }

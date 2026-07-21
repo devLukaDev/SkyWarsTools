@@ -164,13 +164,13 @@ function TrustFactorCards({ data, isLoading }: { data?: TrustfactorResponse; isL
 				))}
 			</SourceCard>
 
-			<SourceCard title="Urchin" credit={urchin?.credit} isEmpty={!urchin?.tags?.length} isLoading={isLoading}>
+			<SourceCard title="Coral (Urchin)" credit={urchin?.credit} isEmpty={!urchin?.tags?.length} isLoading={isLoading}>
 				{sortBySeverity(
 					urchin?.tags,
-					(t) => t.type,
-					(t) => t.reason,
+					(t) => t.text,
+					(t) => t.tooltip,
 				).map((tag, i: number) => (
-					<TagRow key={i} label={tag.type} detail={tag.reason} />
+					<TagRow key={i} label={tag.text} detail={tag.tooltip} />
 				))}
 			</SourceCard>
 
