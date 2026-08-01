@@ -5,8 +5,6 @@ import { formatSchemePreview } from "@/app/utils/Utils";
 import MinecraftText from "@/app/utils/MinecraftText";
 
 const SchemePreviews = () => {
-
-
 	const formatReq = (req?: string | number) => {
 		if (!req) return "None";
 		if (typeof req === "number") return "SkyWars Level " + req;
@@ -16,6 +14,15 @@ const SchemePreviews = () => {
 			.replace(/at/g, "")
 			.replace(/through/g, "");
 	};
+
+	const getNumericReq = (s: (typeof schemes)[number]) => {
+		if (typeof s.req === "number") return s.req;
+		if (!s.req) return 501;
+		return 501;
+	};
+
+	const sortedSchemes = [...schemes].sort((a, b) => getNumericReq(a) - getNumericReq(b));
+
 	return (
 		<div className="flex flex-col p-4 ">
 			<h1 className="text-4xl font-bold text-center my-2">Schemes</h1>
@@ -32,7 +39,7 @@ const SchemePreviews = () => {
 					</thead>
 					<tbody>
 						{/* Slice last one, that i made up for Prestige handyness */}
-						{schemes.slice(0, -1).map((scheme) => (
+						{sortedSchemes.slice(0, -1).map((scheme) => (
 							<tr key={scheme.name}>
 								<td className="p-2 font-semibold text-lg">{scheme.formattedName}</td>
 								<td className="p-2 font-mono text-xl">

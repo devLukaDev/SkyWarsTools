@@ -61,7 +61,7 @@ const KitPrestigeCard: React.FC<KitPrestigeCardProps> = ({ kitName, stats, curre
 	const [customXpPerHour, setCustomXpPerHour] = React.useState(initialXpPerHour);
 
 	let glitched = false;
-	if (kitName.includes("team")) {
+	if (kitName.includes("team") || kitName.includes("mythic")) {
 		const xp = stats.xp ?? 0;
 		const kills = stats.kills ?? 0;
 		if (kills * 25 < xp) {
@@ -113,7 +113,7 @@ const KitPrestigeCard: React.FC<KitPrestigeCardProps> = ({ kitName, stats, curre
 		<div
 			className={
 				`bg-gray-900 rounded-xl p-4 w-85 h-${maxHeight} overflow-hidden cursor-pointer shadow-lg border ` +
-				(glitched ? "border-red-500 bg-red-900/50" : maxed ? "enchanted border-amber-400" : "border-gray-700") +
+				(maxed ? "enchanted border-amber-400" : glitched ? "border-red-500 bg-red-900/50" : "border-gray-700") +
 				(staleMode ? " border-gray-600 pointer-events-none opacity-60" : "")
 			}
 			onClick={() => toggleHeight()}

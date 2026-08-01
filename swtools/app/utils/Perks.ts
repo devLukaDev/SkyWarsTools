@@ -290,7 +290,7 @@ export const perks = {
 		},
 		icon: "Iron_Bars.png",
 	},
-	solo_apothecary: {
+	apothecary: {
 		name: "Apothecary",
 		lore: {
 			"0": "§o§aApothecary§r",
