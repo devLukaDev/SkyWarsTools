@@ -241,7 +241,7 @@ const Table: React.FC<OverallResponse> = (response) => {
 						)}
 						<tr className="border-b-1 border-white">
 							<td className="inline lg:hidden">Mini</td>
-							<td>{response.stats.kills_mini ?? "0".toLocaleString()}</td>
+							<td>{(response.stats.kills_mini ?? "0").toLocaleString()}</td>
 							<td>{(response.stats.games_mini ?? 0) - (response.stats.wins_mini ?? 0)}</td>
 							<td
 								className={kdrClass(

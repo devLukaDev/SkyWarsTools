@@ -42,7 +42,7 @@ const FreqPlayerList = () => {
 								className="rounded"
 							/>
 							<div className="min-w-0">
-								<div className="font-semibold truncate max-w-[225px]">{entry.value}</div>
+								<div className="font-semibold truncate">{entry.value}</div>
 							</div>
 						</a>
 					))}
