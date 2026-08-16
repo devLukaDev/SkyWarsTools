@@ -1110,6 +1110,10 @@ export interface Stats {
 	customs_kitsMaxPrestigeMega?: number;
 	customs_kitsMaxPrestigeRanked?: number;
 	customs_kitsMaxPrestige?: number;
+
+	customs_experience_per_win?: number;
+	customs_experience_per_kill?: number;
+	customs_experience_per_game?: number;
 }
 
 export interface Brewery {
