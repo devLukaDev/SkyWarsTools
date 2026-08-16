@@ -867,7 +867,7 @@ export const rawSchemes: Scheme[] = [
 	},
 	{
 		name: "sky",
-		rankColor: ["§e", "§f", "§b", "§b", "§f"],
+		rankColor: ["§e", "§e", "§b", "§b", "§f"],
 		iconColor: "§f",
 		req: "§5§o§cUnlocked at Sloth Insane Kit Prestige VII!",
 		reqKit: "Sloth Team",
