@@ -30,7 +30,7 @@ const FreqPlayerList = () => {
 					data.stats.slice(0, 9).map((entry: StatEntry, index: number) => (
 						<a
 							key={index}
-							className="flex items-center gap-3 lg:gap-4 bg-content rounded-md p-1 lg:p-2 w-full text-xl animate-press"
+							className="flex items-center gap-3 lg:gap-4 bg-content rounded-md p-1 lg:p-2 w-full text-xl animate-press border-2 border-[#ffffff22]"
 							href={`/player/${entry.value}/stats/table`}
 							id={entry.score.toString()}
 						>

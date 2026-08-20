@@ -44,7 +44,7 @@ const PatreonPlayerList = () => {
 							<a
 								href={`/redirect?uuid=${supporter.mc_account}`}
 								key={index}
-								className="flex items-center gap-3 lg:gap-4 bg-content rounded-md p-1 lg:p-2 w-full text-xl animate-press cursor-pointer enchanted"
+								className="flex items-center gap-3 lg:gap-4 bg-content rounded-md p-1 lg:p-2 w-full text-xl animate-press cursor-pointer enchanted border-2 border-[#ffffff22]"
 							>
 								<Image
 									src={`${process.env.NEXT_PUBLIC_HEADS_API}/${supporter.mc_account}`}
