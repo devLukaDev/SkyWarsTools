@@ -6,7 +6,7 @@ import { calcKitPrestigeLevel, calcLevel, fetcher, formatPlaytime, romanize, sho
 import { getPlayerRank } from "@/app/utils/RankTag";
 import MinecraftText from "@/app/utils/MinecraftText";
 import { formatScheme } from "@/app/utils/Scheme";
-import { ArrowBigLeft, ArrowBigRight, LoaderCircle, Search } from "lucide-react";
+import { ArrowBigLeft, ArrowBigRight, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, LoaderCircle, Search } from "lucide-react";
 import { keys } from "@/app/utils/LeaderboardKeys";
 import Tooltip from "@mui/material/Tooltip";
 import ErrorView from "@/app/components/universal/ErrorView";
@@ -146,7 +146,7 @@ const Page = () => {
 										return;
 									}
 									const data = await res.json();
-									console.log(data)
+									console.log(data);
 									const rank = data?.rank;
 									if (!rank) {
 										setError("Could not determine rank from score.");
@@ -175,28 +175,8 @@ const Page = () => {
 			<div className="w-full mx-auto flex flex-col items-center justify-center gap-0">
 				<div className="w-full flex flex-row items-end justify-between">
 					<h2 className="text-2xl font-bold text-center text-accent pt-2 px-6 rounded-t-xl bg-content w-fit">{statInfo?.name}</h2>
-					<div className="flex items-center gap-3 bg-content p-1 px-2 rounded-t-xl">
-						<button
-							className="px-1 rounded bg-layer text-content font-bold disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
-							disabled={page <= 1}
-							onClick={() => {
-								const prevPage = page - 1;
-								window.location.search = `?page=${prevPage}`;
-							}}
-						>
-							<ArrowBigLeft></ArrowBigLeft>
-						</button>
-						<span className="font-semibold text-lg bg-layer px-3 rounded-xl">{page}</span>
-						<button
-							className="px-1 rounded bg-layer text-content font-bold disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
-							disabled={!data || data.entries.length < 50}
-							onClick={() => {
-								const nextPage = page + 1;
-								window.location.search = `?page=${nextPage}`;
-							}}
-						>
-							<ArrowBigRight></ArrowBigRight>
-						</button>
+					<div className="flex items-center  bg-content p-1 px-2 rounded-t-xl">
+						<Paginator page={page} data={data} />
 					</div>
 				</div>
 
@@ -360,28 +340,8 @@ const Page = () => {
 						</tbody>
 					</table>
 				</div>
-				<div className="flex items-center gap-3 bg-content p-1 px-2 m-3 rounded-xl">
-					<button
-						className="px-1 rounded bg-layer text-content font-bold disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
-						disabled={page <= 1}
-						onClick={() => {
-							const prevPage = page - 1;
-							window.location.search = `?page=${prevPage}`;
-						}}
-					>
-						<ArrowBigLeft></ArrowBigLeft>
-					</button>
-					<span className="font-semibold text-lg bg-layer px-3 rounded-xl">{page}</span>
-					<button
-						className="px-1 rounded bg-layer text-content font-bold disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
-						disabled={!data || data.entries.length < 50}
-						onClick={() => {
-							const nextPage = page + 1;
-							window.location.search = `?page=${nextPage}`;
-						}}
-					>
-						<ArrowBigRight></ArrowBigRight>
-					</button>
+				<div className="flex items-center bg-content p-1 px-2 m-3 rounded-xl">
+					<Paginator page={page} data={data} />
 				</div>
 				<div className="flex flex-col gap-2 bg-content p-2 px-4 rounded-xl w-fit mx-auto">
 					<span className="flex items-center gap-2">
@@ -394,6 +354,65 @@ const Page = () => {
 					</span>
 				</div>
 			</div>
+		</>
+	);
+};
+
+const Paginator = ({ page, data }: { page: number; data?: LBResponse }) => {
+	return (
+		<>
+			<button
+				className="mr-1 rounded bg-layer text-content font-bold disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+				disabled={page == 1}
+				onClick={() => {
+					window.location.search = `?page=1`;
+				}}
+			>
+				<ChevronsLeft></ChevronsLeft>
+			</button>
+			<button
+				className="mr-1 rounded bg-layer text-content font-bold disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+				disabled={page <= 1}
+				onClick={() => {
+					const prevPage = page - 1;
+					window.location.search = `?page=${prevPage}`;
+				}}
+			>
+				<ChevronLeft></ChevronLeft>
+			</button>
+			<input
+				type="number"
+				className="font-semibold text-lg bg-layer px-0 rounded-xl w-14 text-center"
+				defaultValue={page}
+				onKeyDown={(e) => {
+					if (e.key === "Enter") {
+						if (e.currentTarget.value === "") return;
+						if (parseInt(e.currentTarget.value) < 1) {
+							e.currentTarget.value = "1";
+						}
+						window.location.search = `?page=${e.currentTarget.value}`;
+					}
+				}}
+			/>
+			<button
+				className="ml-1 rounded bg-layer text-content font-bold disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+				disabled={!data || data.entries.length < 50}
+				onClick={() => {
+					const nextPage = page + 1;
+					window.location.search = `?page=${nextPage}`;
+				}}
+			>
+				<ChevronRight></ChevronRight>
+			</button>
+			<button
+				className="ml-1 rounded bg-layer text-content font-bold disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+				disabled={!data || data.pages === page}
+				onClick={() => {
+					window.location.search = `?page=${data?.pages}`;
+				}}
+			>
+				<ChevronsRight></ChevronsRight>
+			</button>
 		</>
 	);
 };

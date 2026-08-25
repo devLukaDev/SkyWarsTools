@@ -1,6 +1,8 @@
 export type LBResponse = {
 	stat: string;
 	page: number;
+	pages: number;
+	total: number;
 	entries: LBEntry[];
 	siblingKeys: string[];
 };
