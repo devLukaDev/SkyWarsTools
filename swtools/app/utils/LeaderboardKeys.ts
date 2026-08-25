@@ -528,6 +528,10 @@ export const keys: LeaderboardKey[] = [
 	{ name: "Kits Max Prestige Ranked", value: "customs_kitsMaxPrestigeRanked" },
 	{ name: "Kits Max Prestige", value: "customs_kitsMaxPrestige" },
 
+	{ name: "Experience Per Win", value: "customs_experience_per_win" },
+	{ name: "Experience Per Kill", value: "customs_experience_per_kill" },
+	{ name: "Experience Per Game", value: "customs_experience_per_game" },
+
 	{ name: "Lab: Rush Wins", value: "lab_win_rush_lab" }, // – Rush Wins
 	{ name: "Lab: Rush Solo Wins", value: "lab_win_rush_lab_solo" }, // – Rush Solo Wins
 	{ name: "Lab: Rush Team Wins", value: "lab_win_rush_lab_team" }, // – Rush Team Wins
@@ -542,4 +546,6 @@ export const keys: LeaderboardKey[] = [
 	{ name: "Lab: Lucky Blocks Team Wins", value: "lab_win_lucky_blocks_lab_team" }, // – LB Team Wins
 	{ name: "Lab: Hunters vs Beasts Wins", value: "lab_win_hunters_vs_beasts_lab" }, //
 	// { name: "Lab: Hunters vs Beasts Solo Wins", value: "lab_win_hunters_vs_beasts_lab_solo"}, // there is no team, usually solo = overall
+
+	{ name: "Tokens", value: "cosmetic_tokens" }
 ];
