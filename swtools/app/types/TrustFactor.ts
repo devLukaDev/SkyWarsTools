@@ -47,9 +47,9 @@ export interface Credit {
 export interface TrustfactorResponse {
 	success: true;
 	externals: {
-		aurora: { tags: AuroraTag[]; credit: Credit };
-		winstr: { tags: WinstrTag[]; credit: Credit };
-		urchin: { tags: CubelifyTag[]; credit: Credit };
-		seraph: { tags: CubelifyTag[]; credit: Credit };
+		aurora: { tags: AuroraTag[]; credit: Credit; error: boolean };
+		winstr: { tags: WinstrTag[]; credit: Credit; error: boolean };
+		urchin: { tags: CubelifyTag[]; credit: Credit; error: boolean };
+		seraph: { tags: CubelifyTag[]; credit: Credit; error: boolean };
 	};
 }

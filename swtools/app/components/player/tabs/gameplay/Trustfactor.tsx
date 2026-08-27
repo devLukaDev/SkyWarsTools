@@ -3,6 +3,7 @@ import Loading from "@/app/components/universal/Loading";
 import { OverallResponse } from "@/app/types/OverallResponse";
 import { Credit, TrustfactorResponse } from "@/app/types/TrustFactor";
 import { fetcher } from "@/app/utils/Utils";
+import { ErrorMessage } from "next/dist/next-devtools/dev-overlay/components/errors/error-message/error-message";
 import React, { ReactNode } from "react";
 import useSWR from "swr";
 
@@ -106,12 +107,20 @@ function LoadingState() {
 		</div>
 	);
 }
+function ErrorState() {
+	return (
+		<div className="flex h-full items-center justify-center">
+			<span className="text-s text-red-300 text-center">This service did not respond...</span>
+		</div>
+	);
+}
 
 function SourceCard({
 	title,
 	credit,
 	isEmpty,
 	isLoading,
+	isError,
 	children,
 }: {
 	title: string;
@@ -119,7 +128,9 @@ function SourceCard({
 	isEmpty: boolean;
 	isLoading: boolean;
 	children: ReactNode;
+	isError?: boolean;
 }) {
+	
 	return (
 		<div className="w-full lg:w-64 h-100 flex flex-col bg-layer rounded-lg p-4">
 			<div className="flex items-center justify-between mb-1 pb-3 border-b border-white/[0.08]">
@@ -128,7 +139,8 @@ function SourceCard({
 			</div>
 			<div className="flex-1 overflow-y-scroll [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 				{isLoading ? <LoadingState></LoadingState> : null}
-				{isEmpty ? <EmptyState /> : children}
+				{isError ? <ErrorState></ErrorState> : null}
+				{isEmpty && !isLoading && !isError ? <EmptyState /> : children}
 			</div>
 		</div>
 	);
@@ -144,7 +156,7 @@ function TrustFactorCards({ data, isLoading }: { data?: TrustfactorResponse; isL
 
 	return (
 		<div className="w-full flex flex-col lg:flex-row gap-4 justify-center items-start flex-wrap">
-			<SourceCard title="Aurora" credit={aurora?.credit} isEmpty={!aurora?.tags?.length} isLoading={isLoading}>
+			<SourceCard title="Aurora" credit={aurora?.credit} isEmpty={!aurora?.tags?.length} isLoading={isLoading} isError={aurora?.error}> 
 				{sortBySeverity(
 					aurora?.tags,
 					(t) => t.text,
@@ -154,7 +166,7 @@ function TrustFactorCards({ data, isLoading }: { data?: TrustfactorResponse; isL
 				))}
 			</SourceCard>
 
-			<SourceCard title="Winstreak" credit={winstr?.credit} isEmpty={!winstr?.tags?.length} isLoading={isLoading}>
+			<SourceCard title="Winstreak" credit={winstr?.credit} isEmpty={!winstr?.tags?.length} isLoading={isLoading} isError={winstr?.error}>
 				{sortBySeverity(
 					winstr?.tags,
 					(t) => t.name,
@@ -164,7 +176,7 @@ function TrustFactorCards({ data, isLoading }: { data?: TrustfactorResponse; isL
 				))}
 			</SourceCard>
 
-			<SourceCard title="Coral (Urchin)" credit={urchin?.credit} isEmpty={!urchin?.tags?.length} isLoading={isLoading}>
+			<SourceCard title="Coral" credit={urchin?.credit} isEmpty={!urchin?.tags?.length} isLoading={isLoading} isError={urchin?.error}>
 				{sortBySeverity(
 					urchin?.tags,
 					(t) => t.text,
@@ -174,7 +186,7 @@ function TrustFactorCards({ data, isLoading }: { data?: TrustfactorResponse; isL
 				))}
 			</SourceCard>
 
-			<SourceCard title="Seraph" credit={seraph?.credit} isEmpty={!seraph?.tags?.length} isLoading={isLoading}>
+			<SourceCard title="Seraph" credit={seraph?.credit} isEmpty={!seraph?.tags?.length} isLoading={isLoading} isError={seraph?.error}>
 				{sortBySeverity(
 					seraph?.tags,
 					(t) => t.text,
