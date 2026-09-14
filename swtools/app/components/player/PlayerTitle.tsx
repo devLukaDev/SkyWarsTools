@@ -88,7 +88,7 @@ const PlayerTitle: React.FC<PlayerTitleProps> = ({ response }) => {
 	// Guild Suffix
 	let guildColor: string = "§7";
 	let guildTagFormatted: string = "";
-	if (response.guild.tag) {
+	if (response.guild && response.guild.tag) {
 		switch (response.guild.tagColor) {
 			case "YELLOW":
 				guildColor = "§e";
