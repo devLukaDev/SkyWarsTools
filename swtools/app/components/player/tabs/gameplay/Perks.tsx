@@ -1,11 +1,11 @@
-import PortalTooltip from "@/app/components/universal/MinecraftTooltip";
+import MinecraftTooltip from "@/app/components/universal/MinecraftTooltip";
 import { OverallResponse } from "@/app/types/OverallResponse";
 import MinecraftText from "@/app/utils/MinecraftText";
 import { perks } from "@/app/utils/Perks";
 import React from "react";
 
 function Perks({ response }: { response: OverallResponse }) {
-	// console.log(Object.values(response.stats.perkslot?.normal ?? ""));
+
 	return (
 		<div className="w-full flex flex-col lg:flex-row gap-2 justify-center  h-fit lg:h-100 ">
 			{response.stats.perkslot?.normal && Object.values(response.stats.perkslot.normal).some((perk) => perk) ? (
@@ -18,7 +18,7 @@ function Perks({ response }: { response: OverallResponse }) {
 					return (
 						<React.Fragment key={perk}>
 							<div className="hidden lg:block">
-								<PortalTooltip
+								<MinecraftTooltip
 									trigger={({ ref, onMouseEnter, onMouseLeave, onFocus, onBlur, tabIndex }) => (
 										<div
 											ref={ref}
@@ -43,7 +43,7 @@ function Perks({ response }: { response: OverallResponse }) {
 									{Object.values(perkObj.lore).map((loreLine, index) => (
 										<MinecraftText key={index}>{loreLine}</MinecraftText>
 									))}
-								</PortalTooltip>
+								</MinecraftTooltip>
 							</div>
 							<div className="flex lg:hidden items-center gap-4">
 								<div

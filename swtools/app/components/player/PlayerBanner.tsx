@@ -6,6 +6,9 @@ import { auth } from "@/app/firebase/config";
 import useSWR from "swr";
 import { fetcher } from "@/app/utils/Utils";
 import { Tooltip } from "@mui/material";
+import MinecraftTooltip from "../universal/MinecraftTooltip";
+import MinecraftText from "@/app/utils/MinecraftText";
+import PortalSquare from "../universal/UniversalTooltip";
 
 interface PlayerBannerProps {
 	playerName: string;
@@ -48,7 +51,6 @@ const PlayerBanner: React.FC<PlayerBannerProps> = ({ playerName }) => {
 
 		return Math.max(0, months);
 	};
-	console.log(monthsSincePledge());
 
 	return (
 		<div className="relative w-full">
@@ -84,12 +86,39 @@ const PlayerBanner: React.FC<PlayerBannerProps> = ({ playerName }) => {
 			)}
 			{since && (
 				<div
-					className="absolute top-1 right-2 lg:top-2 lg:right-3 
-				text-white text-sm lg:text-base drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] flex flex-col items-center justify-center"
+					className="hidden lg:absolute lg:top-0 lg:right-0 h-20 w-20
+				text-white text-sm lg:text-base drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] lg:flex flex-col items-center justify-center"
 				>
-					<span>SUPPORTER</span>
-					<span className="text-2xl font-bold -mb-1.5">{monthsSincePledge()}</span>
-					<span className="text-lgfont-bold">months</span>
+					<div className="p-2 flex flex-col">
+						<PortalSquare
+							trigger={({ ref, onMouseEnter, onMouseLeave, onFocus, onBlur, tabIndex }) => (
+								<div ref={ref} className="relative" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+									<Image
+										src={"/icons/patreon/netherite_abald.png"}
+										priority
+										width={100}
+										height={100}
+										className="h15 w-15 object-cover"
+										alt="Player Banner"
+										quality={50}
+										unoptimized
+										tabIndex={tabIndex}
+										onFocus={onFocus}
+										onBlur={onBlur}
+									></Image>
+									<span className="absolute inset-0 flex items-center justify-center text-white font-bold text-3xl pointer-events-none">
+										{monthsSincePledge()}
+									</span>
+								</div>
+							)}
+						>
+							<div className="flex flex-col justify-center align-middle text-center">
+								<span className="font-bold">Supporter</span>
+								<span className="text-xs">This user has supported the project through Patreon for {monthsSincePledge()} months!</span>
+
+							</div>
+						</PortalSquare>
+					</div>
 				</div>
 			)}
 		</div>

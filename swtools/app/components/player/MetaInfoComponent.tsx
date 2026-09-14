@@ -35,7 +35,7 @@ const MetaInfoComponent = ({
 		<>
 			<div className="ml-auto relative">
 				<div className="flex flex-row gap-2 justify-center items-center">
-					<span className="font-light">{savedTheseStats ? "Snapshot saved!" : "On cooldown."}</span>
+					<span className="hidden lg:inline font-light">{savedTheseStats ? "Snapshot saved!" : "On cooldown for "}</span>
 					<div
 						className="inline-flex h-8 items-center justify-center cursor-pointer rounded"
 						onMouseEnter={() => setOpen(true)}

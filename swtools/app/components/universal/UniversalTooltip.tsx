@@ -3,7 +3,7 @@
 import { createPortal } from "react-dom";
 import { useState, useRef, useEffect, ReactNode } from "react";
 
-interface PortalTooltipProps {
+interface PortalSquareProps {
 	trigger: (props: {
 		ref: React.RefObject<HTMLDivElement | null>;
 		onMouseEnter: () => void;
@@ -16,7 +16,7 @@ interface PortalTooltipProps {
 	className?: string;
 }
 
-export default function MinecraftTooltip({ trigger, children, className }: PortalTooltipProps) {
+export default function PortalSquare({ trigger, children, className }: PortalSquareProps) {
 	const [open, setOpen] = useState(false);
 	const [coords, setCoords] = useState<{ top: number; left: number } | null>(null);
 	const anchorRef = useRef<HTMLDivElement>(null);
@@ -29,7 +29,7 @@ export default function MinecraftTooltip({ trigger, children, className }: Porta
 		if (!anchorRef.current) return;
 		const rect = anchorRef.current.getBoundingClientRect();
 		setCoords({
-			top: rect.bottom + window.scrollY + 8,
+			top: rect.bottom + window.scrollY,
 			left: rect.left + window.scrollX,
 		});
 	};
@@ -60,7 +60,7 @@ export default function MinecraftTooltip({ trigger, children, className }: Porta
 				createPortal(
 					<div
 						style={{ position: "absolute", top: coords.top, left: coords.left }}
-						className={className ?? "w-100 p-2 rounded bg-black/90 text-xl text-white z-50"}
+						className={className ?? "w-32 h-32 p-2 rounded bg-gray-700 text-xl text-white z-50"}
 						onMouseEnter={show}
 						onMouseLeave={hide}
 					>

@@ -124,13 +124,13 @@ const PlayerTitle: React.FC<PlayerTitleProps> = ({ response }) => {
 	return (
 		<div className="bg-main min-h-22 lg:min-h-25 w-full flex items-start">
 			<div className="z-10 relative -mt-6 lg:-mt-6">
-				<img
-					alt="player avatar"
+				<Image
+					src={`${process.env.NEXT_PUBLIC_HEADS_API}/${response.uuid}`}
 					width={100}
 					height={100}
 					className="rounded h-20 w-20 lg:h-28 lg:w-28 mx-2 lg:mx-4 z-10 hidden lg:inline"
-					src={`${process.env.NEXT_PUBLIC_HEADS_API}/${response.uuid}`}
-				/>
+					alt="player avatar"
+				></Image>
 				{/* Online status indicator overlay */}
 				<span
 					title={title}
