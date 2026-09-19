@@ -16,6 +16,8 @@ const MontageCard: React.FC<OverallResponse> = (data) => {
 	const [useName, setUseName] = React.useState(true);
 	const [fontSize, setFontSize] = React.useState(80);
 	const [useShadow, setUseShadow] = React.useState(true);
+	const [useCustomName, setUseCustomName] = React.useState(false);
+	const [customName, setCustomName] = React.useState("");
 
 	const [showOptions, setShowOptions] = React.useState(false);
 
@@ -70,7 +72,7 @@ const MontageCard: React.FC<OverallResponse> = (data) => {
 					} else {
 						text += "§7 ";
 					}
-					if (useName) text += data.player;
+					if (useName) text += useCustomName && customName.trim() ? customName : data.player;
 
 					if (useCheaterSuffix) {
 						text += " §c[CHEATING]";
@@ -153,6 +155,25 @@ const MontageCard: React.FC<OverallResponse> = (data) => {
 							/>
 							<span>Show Name</span>
 						</label>
+						<label className="flex items-center gap-2 text-base font-medium text-white">
+							<input
+								type="checkbox"
+								className="form-checkbox h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+								checked={useCustomName}
+								onChange={(e) => setUseCustomName(e.target.checked)}
+							/>
+							<span>Custom Name</span>
+						</label>
+						{useCustomName && (
+							<input
+								type="text"
+								value={customName}
+								maxLength={32}
+								onChange={(e) => setCustomName(e.target.value)}
+								placeholder={data.player}
+								className="w-full p-1 rounded border border-gray-300 focus:outline-none text-white bg-gray-800"
+							/>
+						)}
 						<label className="flex items-center gap-2 text-base font-medium text-white">
 							<input
 								type="checkbox"
