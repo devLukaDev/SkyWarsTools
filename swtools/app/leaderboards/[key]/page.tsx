@@ -211,6 +211,7 @@ const Page = () => {
 									took: 0,
 									// eslint-disable-next-line @typescript-eslint/no-explicit-any
 								} as any;
+								if (!entry.info) return <></>;
 
 								const highlighted = highlight === entry.uuid;
 								const rank = getPlayerRank(mockOverallResponse);

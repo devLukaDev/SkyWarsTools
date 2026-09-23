@@ -84,7 +84,19 @@ export interface PlayerRank {
 export function getPlayerRank(playerOverall: OverallResponse, onlyPackages = false): PlayerRank {
 	const playerDisplay = playerOverall.display;
 	let foundRank: PlayerRanks = PlayerRanks.NON_DONOR;
-
+	if (!playerDisplay) {
+		let out = {
+			priority: foundRank,
+			name: "NON_DONOR",
+			cleanName: "DEFAULT",
+			prefix: "§7",
+			cleanPrefix: "",
+			colorCode: MinecraftFormatting.GRAY,
+			colorHex: MinecraftColorAsHex[MinecraftFormatting.GRAY],
+			staff: false,
+		};
+		return out;
+	}
 	if (onlyPackages) {
 		if (playerDisplay.monthlyPackageRank) {
 			const rank = PlayerRanks[playerDisplay.monthlyPackageRank as keyof typeof PlayerRanks];
@@ -275,7 +287,8 @@ export function getPlayerRank(playerOverall: OverallResponse, onlyPackages = fal
 		if (out.priority === PlayerRanks.SUPERSTAR) {
 			out.prefix = `${customRankColor ?? "§6"}[MVP${customPlusColor ?? "§c"}++${customRankColor ?? "§6"}]`;
 		}
-		if (out.priority === PlayerRanks.MVP_PLUS) { // hacky fix
+		if (out.priority === PlayerRanks.MVP_PLUS) {
+			// hacky fix
 			out.prefix = `${"§b"}[MVP${customPlusColor ?? "§c"}+${"§b"}]`;
 		}
 	}
