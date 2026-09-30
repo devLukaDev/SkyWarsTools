@@ -1,3 +1,5 @@
+import { Display } from "./OverallResponse";
+
 export interface GuildResponse {
     success: boolean;
     guild:   Guild;
@@ -36,6 +38,10 @@ export interface Member {
     questParticipation?: number;
     expHistory:          { [key: string]: number };
     mutedTill?:          number;
+    player?: string;
+    display?: Display;
+    queried?: number;
+    exp?: number;
 }
 
 export interface RankElement {
