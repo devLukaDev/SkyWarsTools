@@ -5,9 +5,10 @@ import { GuildResponse } from "@/app/types/GuildResponse";
 import { OverallResponse } from "@/app/types/OverallResponse";
 import { SnapshotKeysResponse, SnapshotsResponse } from "@/app/types/Snapshot";
 import MinecraftText from "@/app/utils/MinecraftText";
-import { calcHypixelLevel, formatTimestampToVerboseDate, timeAgo } from "@/app/utils/Utils";
+import { calcGuildLevel, formatTimestampToVerboseDate, gameTypeNames, timeAgo } from "@/app/utils/Utils";
 import { Tooltip } from "@mui/material";
 import React from "react";
+import { Star } from "lucide-react";
 
 export default async function GuildPage({ params }: { params: Promise<{ playerName: string }> }) {
 	async function fetchGuildData(playerName: string): Promise<GuildResponse | null> {
@@ -50,51 +51,76 @@ export default async function GuildPage({ params }: { params: Promise<{ playerNa
 		}
 		const finalGuildName = guildData.guild.name + guildColor + " [" + guildData.guild.tag + "]";
 
-
-
 		return (
 			<>
-				<div className="bg-content w-full h-fit flex flex-col gap-4 p-6 text-5xl text-center">
-					<MinecraftText>{finalGuildName}</MinecraftText>
-				</div>
+				<div className="w-full flex flex-col gap-4 p-6 bg-content">
+					<div className="bg-layer w-full flex flex-col gap-4 p-4 lg:p-6 text-3xl lg:text-5xl text-center rounded-xl">
+						<MinecraftText>{finalGuildName}</MinecraftText>
+						<span className="text-base">{guildData.guild.description}</span>
+					</div>
 
-				<div className="w-full bg-content p-4 justify-around font-bold hidden lg:flex">
-					<span>
-						<span className="text-gray-400 font-normal">Guild Level:</span> {calcHypixelLevel(guildData.guild.exp)}
-					</span>
-					<span>
-						<span className="text-gray-400 font-normal">First Login:</span>{" "}
-						<Tooltip title={timeAgo(guildData.guild.created / 1000)}>
-							<span>{formatTimestampToVerboseDate(guildData.guild.created)}</span>
-						</Tooltip>
-					</span>
-					<span>
-						<span className="text-gray-400 font-normal">Members: </span> {guildData.guild.members.length}
-					</span>
-					<span>
-						<span className="text-gray-400 font-normal">Publicly Listed: </span> {guildData.guild.publiclyListed ? "Yes" : "No"}
-					</span>
-				</div>
+					<div className="w-full flex flex-col lg:flex-row gap-4">
+						<div className="bg-layer w-full flex flex-col gap-3 p-4 rounded-xl font-bold">
+							<span>Details</span>
+							<Stat label="Guild Level">{calcGuildLevel(guildData.guild.exp)}</Stat>
+							<Stat label="First Login">
+								<Tooltip title={timeAgo(guildData.guild.created / 1000)}>
+									<span>{formatTimestampToVerboseDate(guildData.guild.created)}</span>
+								</Tooltip>
+							</Stat>
+							<Stat label="Members">{guildData.guild.members.length}</Stat>
+							<Stat label="Publicly Listed">{guildData.guild.publiclyListed ? "Yes" : "No"}</Stat>
+							<Stat label="Legacy Guild">{guildData.guild.coinsEver > 0 ? "Yes" : "No"}</Stat>
+							<span>Achievements</span>
+							<Stat label="Online Players">{guildData.guild.achievements.ONLINE_PLAYERS}</Stat>
+							<Stat label="Experience Kings">{guildData.guild.achievements.EXPERIENCE_KINGS.toLocaleString()}</Stat>
+							<Stat label="Winners">{guildData.guild.achievements.WINNERS.toLocaleString()}</Stat>
+						</div>
 
-				<div className="w-full bg-content p-4 justify-around font-bold hidden lg:flex rounded-b-xl">
-					<span>
-						<span className="text-gray-400 font-normal">Online Players:</span> {guildData.guild.achievements.ONLINE_PLAYERS}
-					</span>
-					<span>
-						<span className="text-gray-400 font-normal">Experience Kings: </span>{" "}
-						{guildData.guild.achievements.EXPERIENCE_KINGS.toLocaleString()}
-					</span>
-					<span>
-						<span className="text-gray-400 font-normal">Winners: </span> {guildData.guild.achievements.WINNERS}
-					</span>
-				</div>
-				<div className="">
-					<GuildMemberList guildData={guildData}>
-						
-					</GuildMemberList>
+						<div className="bg-layer w-full flex flex-col gap-3 p-4 rounded-xl font-bold"></div>
+						{(() => {
+							const expByGame = Object.entries(guildData.guild.guildExpByGameType ?? {}).sort(([, a], [, b]) => b - a);
+							const totalExp = expByGame.reduce((sum, [, xp]) => sum + xp, 0);
+							const preferred = new Set(guildData.guild.preferredGames.map((g) => g.toUpperCase()));
+							const formatGame = (key: string) => gameTypeNames[key] || key;
 
+							return (
+								<div className="bg-layer w-full flex flex-col p-4 rounded-xl font-bold overflow-y-scroll max-h-100">
+									<span className="mb-2">Guild EXP by Game</span>
+									{expByGame.map(([game, xp]) => {
+										const isPreferred = preferred.has(game.toUpperCase());
+										const percent = totalExp > 0 ? (xp / totalExp) * 100 : 0;
+
+										return (
+											<div key={game} className="flex justify-between items-center gap-2">
+												<span
+													className={`flex items-center gap-1 text-base ${isPreferred ? "text-accent" : "text-gray-400"}`}
+												>
+													{isPreferred && <Star className="w-4 h-4 fill-current" />}
+													{formatGame(game)}
+												</span>
+												<Tooltip title={`${xp.toLocaleString()} EXP`}>
+													<span className="text-base">{percent.toFixed(1)}%</span>
+												</Tooltip>
+											</div>
+										);
+									})}
+								</div>
+							);
+						})()}
+					</div>
+				</div>
+				<div className="p-6 bg-layer ">
+					<GuildMemberList guildData={guildData}></GuildMemberList>
 				</div>
 			</>
 		);
 	}
 }
+
+const Stat = ({ label, children }: { label: string; children: React.ReactNode }) => (
+	<div className="flex justify-between items-center gap-2">
+		<span className="text-gray-400 font-normal">{label}</span>
+		<span>{children}</span>
+	</div>
+);

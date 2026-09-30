@@ -1,4 +1,3 @@
-
 import { DescentItem, DescentMap } from "../types/DescentMap";
 import { OverallResponse } from "../types/OverallResponse";
 import { Scheme } from "./Scheme";
@@ -603,8 +602,6 @@ export function calcEXPFromLevel(level: number): number {
 // 	},
 // };
 
-
-
 export function romanize(num: number): string {
 	if (isNaN(num)) return "";
 	if (num == 0) return "0";
@@ -925,3 +922,59 @@ export function formatTimestampShort(date: Date): string {
 	const minutes = String(date.getMinutes()).padStart(2, "0");
 	return `${year}-${month}-${day} ${hours}:${minutes}`;
 }
+
+export function calcGuildLevel(exp: number): number {
+	const thresholds = [100_000, 150_000, 250_000, 500_000, 750_000, 1_000_000, 1_250_000, 1_500_000, 2_000_000, 2_500_000, 3_000_000];
+
+	if (exp < thresholds[0]) {
+		return Number((1 + exp / thresholds[0]).toFixed(2));
+	}
+
+	let level = 1;
+	let remainingExp = exp;
+
+	for (const requiredExp of thresholds) {
+		if (remainingExp < requiredExp) {
+			return Number((level + remainingExp / requiredExp).toFixed(2));
+		}
+
+		remainingExp -= requiredExp;
+		level++;
+	}
+
+	// Level 15+ requires 3M EXP per level
+	return Number((level + remainingExp / 3_000_000).toFixed(2));
+}
+
+export const gameTypeNames: Record<string, string> = {
+	QUAKECRAFT: "Quake",
+	WALLS: "Walls",
+	PAINTBALL: "Paintball",
+	SURVIVAL_GAMES: "Blitz Survival Games",
+	TNTGAMES: "TNT Games",
+	VAMPIREZ: "VampireZ",
+	WALLS3: "Mega Walls",
+	ARCADE: "Arcade",
+	ARENA: "Arena",
+	UHC: "UHC Champions",
+	MCGO: "Cops and Crims",
+	BATTLEGROUND: "Warlords",
+	SUPER_SMASH: "Smash Heroes",
+	GINGERBREAD: "Turbo Kart Racers",
+	HOUSING: "Housing",
+	SKYWARS: "SkyWars",
+	TRUE_COMBAT: "Crazy Walls",
+	SPEED_UHC: "Speed UHC",
+	SKYCLASH: "SkyClash",
+	LEGACY: "Classic Games",
+	PROTOTYPE: "Prototype",
+	BEDWARS: "Bed Wars",
+	MURDER_MYSTERY: "Murder Mystery",
+	BUILD_BATTLE: "Build Battle",
+	DUELS: "Duels",
+	SKYBLOCK: "SkyBlock",
+	PIT: "Pit",
+	REPLAY: "Replay",
+	SMP: "SMP",
+	WOOL_GAMES: "Wool Wars",
+};
