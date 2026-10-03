@@ -57,19 +57,19 @@ const PlayerBanner: React.FC<PlayerBannerProps> = ({ playerName }) => {
 	if (monthsSince >= 0) {
 		url = "/icons/patreon/Gold.webp";
 	}
-	if (monthsSince > 5) {
+	if (monthsSince > 3) {
 		url = "/icons/patreon/Diamond.webp";
 	}
-	if (monthsSince > 9) {
+	if (monthsSince > 6) {
 		url = "/icons/patreon/Emerald.webp";
 	}
-	if (monthsSince > 12) {
+	if (monthsSince > 9) {
 		url = "/icons/patreon/Amethyst.webp";
 	}
-	if (monthsSince > 24) {
+	if (monthsSince > 12) {
 		url = "/icons/patreon/Ruby.webp";
 	}
-	if (monthsSince > 32) {
+	if (monthsSince > 24) {
 		url = "/icons/patreon/Netherrite.webp";
 	}
 	
