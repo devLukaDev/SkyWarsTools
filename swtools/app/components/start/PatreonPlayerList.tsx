@@ -9,7 +9,7 @@ type PatreonSupporter = {
 	mc_account?: string;
 	emoji?: string;
 	name?: string;
-	patreon_cents?: number,
+	patreon_cents?: number;
 	patreon_since?: number;
 };
 
@@ -49,7 +49,7 @@ const PatreonPlayerList = () => {
 									key={index}
 									className="flex items-center gap-2 lg:gap-3 bg-content rounded-md p-1 lg:p-2 w-full text-lg animate-press cursor-pointer enchanted border-2 border-[#ffffff22]"
 								>
-									<Image
+									<img
 										src={`${process.env.NEXT_PUBLIC_HEADS_API}/${supporter.mc_account}`}
 										alt={supporter.name ?? "Minecraft avatar"}
 										width={30}

@@ -34,7 +34,7 @@ const FreqPlayerList = () => {
 							href={`/player/${entry.value}/stats/table`}
 							id={entry.score.toString()}
 						>
-							<Image
+							<img
 								src={`${process.env.NEXT_PUBLIC_HEADS_API}/${entry.value}`}
 								alt={"head" + entry.value}
 								width={30}
