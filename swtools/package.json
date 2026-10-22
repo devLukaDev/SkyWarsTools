@@ -9,7 +9,7 @@
 		"lint": "npx eslint ."
 	},
 	"engines": {
-		"node": "24.16"
+		"node": "^24"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.14.0",
