@@ -23,3 +23,6 @@ The Hypixel API policy states:
 > -   For example, you may not use the API for continuous polling of player data for detection of stats earned in-game to offer a history to players using your website.
 
 Keywords here include 'automated', and 'continuous polling', neither of which this tool allows for. The saving of snapshots can only happen once every 16 hours.
+
+## HELP!
+Contact the community and me on [Discord](https://skywarstools.com/discord)!
