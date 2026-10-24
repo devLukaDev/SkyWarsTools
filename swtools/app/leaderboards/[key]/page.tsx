@@ -257,7 +257,7 @@ const Page = () => {
 										].join(" ")}
 										style={
 											isStale
-												? { backgroundColor: "rgba(128,128,128,0.2)" }
+												? { backgroundColor: "rgba(128,128,128,0.1" }
 												: glitched
 													? { backgroundColor: "rgba(255,0,0,0.1)" }
 													: undefined

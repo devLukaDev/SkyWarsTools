@@ -48,10 +48,10 @@ const GuildMemberList = ({ guildData }: GuildMemberListProps) => {
 	return (
 		<div className="w-full mx-auto flex flex-col items-center justify-center gap-0">
 			<div className="w-full flex flex-row items-end justify-between">
-				<h2 className="text-2xl font-bold text-center text-accent pt-2 px-6 rounded-t-xl bg-content w-fit">
+				<h2 className="text-2xl font-bold text-center text-accent pt-2 px-6 rounded-t-xl bg-content w-fit hidden lg:block">
 					Members ({members.length})
 				</h2>
-				<div className="flex items-center gap-2 bg-content p-1 px-2 rounded-t-xl">
+				<div className="flex items-center gap-2 bg-content p-2 px-2 rounded-t-xl">
 					{sortButton("rank", "Rank")}
 					{sortButton("gexp", "Weekly GEXP")}
 				</div>
@@ -89,7 +89,7 @@ const GuildMemberList = ({ guildData }: GuildMemberListProps) => {
 										"border-b last:border-b-0 hover:bg-accent/10 transition-colors relative",
 										isStale ? "opacity-50" : "",
 									].join(" ")}
-									style={isStale ? { backgroundColor: "rgba(128,128,128,0.2)" } : undefined}
+									style={isStale ? { backgroundColor: "rgba(128,128,128,0.1)" } : undefined}
 								>
 									<td
 										className={[
