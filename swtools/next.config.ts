@@ -37,7 +37,7 @@ const nextConfig: NextConfig = {
 				protocol: "https",
 				hostname: "api.mcheads.org",
 				pathname: "/head/**",
-			},
+			}
 		],
 		qualities: [10, 75, 85, 100],
 	},
