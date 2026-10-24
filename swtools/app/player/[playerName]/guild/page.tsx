@@ -106,7 +106,7 @@ export default async function GuildPage({ params }: { params: Promise<{ playerNa
 						</SummaryStat>
 						<SummaryStat compact label="Created">
 							<Tooltip title={timeAgo(guildData.guild.created / 1000)}>
-								<span>{formatTimestampToVerboseDate(guildData.guild.created).split(",")[0]}</span>
+								<span>{new Date(guildData.guild.created).toLocaleString(undefined, { year: "numeric", month: "short", day: "numeric" })}</span>
 							</Tooltip>
 						</SummaryStat>
 						<SummaryStat compact label="Members">
