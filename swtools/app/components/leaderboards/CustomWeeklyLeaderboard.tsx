@@ -167,7 +167,7 @@ const CustomWeeklyLeaderboard = () => {
 											href={`/redirect?uuid=${shortenUUID(row.entry.uuid)}`}
 											className="flex items-center gap-2 w-fit"
 										>
-											<Image
+											<img
 												src={playerFaceUrl}
 												alt={`${row.entry.player} avatar`}
 												width={24}

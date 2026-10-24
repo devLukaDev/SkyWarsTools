@@ -28,18 +28,18 @@ const PlayerBanner: React.FC<PlayerBannerProps> = ({ playerName }) => {
 			revalidateOnReconnect: false,
 		},
 	);
-	let bg = "Siege.png";
+	let bg = "Undead Isle.png";
 	let customBg = false;
 	if (typedUserInfo?.user && typedUserInfo?.user.profile_bg) {
 		bg = typedUserInfo?.user.profile_bg;
 		customBg = typedUserInfo.user.custom_bg != undefined && (typedUserInfo.user.contrib == true || typedUserInfo.user.patreon == true);
 	}
 
-	let since: number | null = typedUserInfo?.user?.patreon_since ?? null;
+	let sinceTime: number | null = typedUserInfo?.user?.patreon_since ?? null;
 	const monthsSincePledge = () => {
-		if (!since) return 0;
+		if (!sinceTime) return 0;
 
-		const pledged = new Date(since * 1000);
+		const pledged = new Date(sinceTime * 1000);
 		const now = new Date();
 
 		let months = (now.getFullYear() - pledged.getFullYear()) * 12 + (now.getMonth() - pledged.getMonth());
@@ -51,6 +51,28 @@ const PlayerBanner: React.FC<PlayerBannerProps> = ({ playerName }) => {
 
 		return Math.max(0, months);
 	};
+	const monthsSince = monthsSincePledge();
+
+	let url: string = "";
+	if (monthsSince >= 0) {
+		url = "/icons/patreon/Gold.webp";
+	}
+	if (monthsSince >= 3) {
+		url = "/icons/patreon/Diamond.webp";
+	}
+	if (monthsSince >= 6) {
+		url = "/icons/patreon/Emerald.webp";
+	}
+	if (monthsSince >= 9) {
+		url = "/icons/patreon/Amethyst.webp";
+	}
+	if (monthsSince >= 12) {
+		url = "/icons/patreon/Ruby.webp";
+	}
+	if (monthsSince >= 24) {
+		url = "/icons/patreon/Netherrite.webp";
+	}
+	
 
 	return (
 		<div className="relative w-full">
@@ -84,21 +106,21 @@ const PlayerBanner: React.FC<PlayerBannerProps> = ({ playerName }) => {
 					unoptimized
 				/>
 			)}
-			{since && (
+			{sinceTime && (
 				<div
-					className="hidden lg:absolute lg:top-0 lg:right-0 h-20 w-20
-				text-white text-sm lg:text-base drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] lg:flex flex-col items-center justify-center"
+					className="hidden lg:absolute lg:top-0 lg:right-0 h-30 w-30
+				text-white text-sm lg:text-base drop-shadow-[0_4px_4px_rgba(255,255,255,1)] lg:flex flex-col items-center justify-center"
 				>
 					<div className="p-2 flex flex-col">
 						<PortalSquare
 							trigger={({ ref, onMouseEnter, onMouseLeave, onFocus, onBlur, tabIndex }) => (
 								<div ref={ref} className="relative" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
 									<Image
-										src={"/icons/patreon/netherite_abald.png"}
+										src={url}
 										priority
-										width={100}
-										height={100}
-										className="h15 w-15 object-cover"
+										width={180}
+										height={180}
+										className="h25 w-25 object-cover"
 										alt="Player Banner"
 										quality={50}
 										unoptimized
@@ -106,15 +128,12 @@ const PlayerBanner: React.FC<PlayerBannerProps> = ({ playerName }) => {
 										onFocus={onFocus}
 										onBlur={onBlur}
 									></Image>
-									<span className="absolute inset-0 flex items-center justify-center text-white font-bold text-3xl pointer-events-none">
-										{monthsSincePledge()}
-									</span>
 								</div>
 							)}
 						>
 							<div className="flex flex-col justify-center align-middle text-center">
 								<span className="font-bold">Supporter</span>
-								<span className="text-xs">This user has supported the project through Patreon for {monthsSincePledge()} months!</span>
+								<span className="text-xs">This user has supported the project through Patreon for {monthsSince} months!</span>
 
 							</div>
 						</PortalSquare>
