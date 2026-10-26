@@ -115,7 +115,7 @@ export default async function GuildPage({ params }: { params: Promise<{ playerNa
 						<SummaryStat compact label="Publicly Listed">
 							{guildData.guild.publiclyListed ? "Yes" : "No"}
 						</SummaryStat>
-						<SummaryStat compact label="Online Players">
+						<SummaryStat compact label="Top Online Players">
 							{guildData.guild.achievements.ONLINE_PLAYERS}
 						</SummaryStat>
 						<SummaryStat compact label="Experience Kings">
