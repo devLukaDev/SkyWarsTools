@@ -1,4 +1,4 @@
-FROM node:26.12.1-slim
+FROM node:slim
 RUN apt-get update && apt-get install -y --no-install-recommends curl \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
