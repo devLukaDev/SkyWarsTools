@@ -28,7 +28,7 @@ const PlayerBanner: React.FC<PlayerBannerProps> = ({ playerName }) => {
 			revalidateOnReconnect: false,
 		},
 	);
-	let bg = "Undead Isle.png";
+	let bg = "Winter Retreat.png";
 	let customBg = false;
 	if (typedUserInfo?.user && typedUserInfo?.user.profile_bg) {
 		bg = typedUserInfo?.user.profile_bg;
